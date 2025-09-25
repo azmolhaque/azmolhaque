@@ -20,8 +20,8 @@
     <style>
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #f8fafc; /* slate-50 */
-            color: #334155; /* slate-700 */
+            background-color: #f8fafc;
+            color: #334155;
         }
         .chart-container {
             position: relative;
@@ -37,6 +37,31 @@
                 height: 300px;
                 max-height: 350px;
             }
+        }
+        .nav-link.active {
+            color: #fff;
+            font-weight: 700;
+        }
+        .nav-link-mobile.active {
+            background-color: #334155;
+            color: #fff;
+        }
+        .mobile-menu-open {
+            transform: translateX(0%);
+        }
+        .mobile-menu-close {
+            transform: translateX(100%);
+        }
+        .mobile-menu-backdrop {
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes slideInRight {
+            from { transform: translateX(100%); }
+            to { transform: translateX(0); }
         }
     </style>
 </head>
@@ -60,21 +85,26 @@
     </nav>
 
     <!-- Mobile Header -->
-    <header class="lg:hidden w-full bg-slate-800 text-white p-4 fixed top-0 z-10 shadow-md">
+    <div id="mobile-menu-backdrop" class="fixed inset-0 bg-black bg-opacity-50 z-20 hidden lg:hidden"></div>
+    <header class="lg:hidden w-full bg-slate-800 text-white p-4 fixed top-0 z-30 shadow-md">
         <div class="container mx-auto flex justify-between items-center">
              <h1 class="text-xl font-bold">Azmol Haque</h1>
              <button id="mobile-menu-button" class="focus:outline-none">
                 <span class="text-3xl">☰</span>
              </button>
         </div>
-        <div id="mobile-menu" class="hidden mt-4">
-             <ul class="space-y-2">
-                <li><a href="#home" class="nav-link-mobile block py-2 px-4 rounded hover:bg-slate-700">Home</a></li>
-                <li><a href="#journey" class="nav-link-mobile block py-2 px-4 rounded hover:bg-slate-700">My Journey</a></li>
-                <li><a href="#arsenal" class="nav-link-mobile block py-2 px-4 rounded hover:bg-slate-700">Cyber Arsenal</a></li>
-                <li><a href="#experience" class="nav-link-mobile block py-2 px-4 rounded hover:bg-slate-700">Experience</a></li>
-                <li><a href="#contact" class="nav-link-mobile block py-2 px-4 rounded hover:bg-slate-700">Contact</a></li>
-            </ul>
+        <div id="mobile-menu" class="fixed top-0 right-0 h-full w-64 bg-slate-800 text-white shadow-xl transition-transform duration-300 ease-in-out transform mobile-menu-close z-40">
+            <div class="p-6">
+                <button id="close-menu-button" class="absolute top-4 right-4 text-3xl">&times;</button>
+                <h1 class="text-2xl font-bold mb-8">Navigation</h1>
+                <ul class="space-y-4">
+                    <li><a href="#home" class="nav-link-mobile block py-2 px-4 rounded transition-colors">Home</a></li>
+                    <li><a href="#journey" class="nav-link-mobile block py-2 px-4 rounded transition-colors">My Journey</a></li>
+                    <li><a href="#arsenal" class="nav-link-mobile block py-2 px-4 rounded transition-colors">Cyber Arsenal</a></li>
+                    <li><a href="#experience" class="nav-link-mobile block py-2 px-4 rounded transition-colors">Experience</a></li>
+                    <li><a href="#contact" class="nav-link-mobile block py-2 px-4 rounded transition-colors">Contact</a></li>
+                </ul>
+            </div>
         </div>
     </header>
 
@@ -83,7 +113,7 @@
         <div class="pt-20 lg:pt-0">
 
             <!-- Home Section -->
-            <section id="home" class="min-h-screen flex items-center px-6 md:px-12">
+            <section id="home" class="min-h-screen flex items-center px-6 md:px-12 py-16">
                 <div class="max-w-4xl">
                     <h2 class="text-4xl md:text-6xl font-bold text-slate-800 leading-tight">Md. Azmol Haque Rony</h2>
                     <h3 class="mt-4 text-xl md:text-2xl text-amber-600 font-medium">Bridging Healthcare & Humanitarian Aid with Resilient Security Solutions</h3>
@@ -100,8 +130,8 @@
             <!-- My Journey Section -->
             <section id="journey" class="py-20 px-6 md:px-12 bg-white">
                 <div class="max-w-4xl mx-auto">
-                    <h2 class="text-3xl font-bold text-center text-slate-800">My Journey: From Nurse to Cyber Analyst</h2>
-                    <p class="mt-4 text-center text-slate-600 max-w-2xl mx-auto">
+                    <h2 class="text-3xl font-bold text-slate-800">My Journey: From Nurse to Cyber Analyst</h2>
+                    <p class="mt-4 text-slate-600 max-w-2xl">
                         My career path is unique, blending the empathy and critical thinking of healthcare with the technical rigor of cybersecurity. This timeline highlights the key milestones in my transition. Click on any event to learn more about the skills and experiences I gained.
                     </p>
                     <div id="timeline-container" class="mt-12 relative border-l-4 border-slate-200">
@@ -113,21 +143,25 @@
             <!-- Cyber Arsenal Section -->
             <section id="arsenal" class="py-20 px-6 md:px-12">
                  <div class="max-w-4xl mx-auto">
-                    <h2 class="text-3xl font-bold text-center text-slate-800">My Cybersecurity Arsenal</h2>
-                    <p class="mt-4 text-center text-slate-600 max-w-2xl mx-auto">
+                    <h2 class="text-3xl font-bold text-slate-800">My Cybersecurity Arsenal</h2>
+                    <p class="mt-4 text-slate-600 max-w-2xl">
                         This dashboard provides a visual overview of my technical capabilities. My skills are a combination of formal training through certifications and practical application in simulated and real-world environments.
                     </p>
                     <div class="mt-12 space-y-12">
                         <div>
-                            <h3 class="text-xl font-semibold text-center mb-4 text-slate-700">Security Tools & Platforms</h3>
-                            <div class="chart-container">
-                                <canvas id="toolsChart"></canvas>
+                            <h3 class="text-xl font-semibold mb-4 text-slate-700">Security Tools & Platforms</h3>
+                            <div class="bg-white p-6 rounded-lg border border-slate-200 shadow-sm">
+                                <div class="chart-container">
+                                    <canvas id="toolsChart"></canvas>
+                                </div>
                             </div>
                         </div>
                         <div>
-                            <h3 class="text-xl font-semibold text-center mb-4 text-slate-700">Programming & Concepts</h3>
-                             <div class="chart-container">
-                                <canvas id="conceptsChart"></canvas>
+                            <h3 class="text-xl font-semibold mb-4 text-slate-700">Programming & Concepts</h3>
+                             <div class="bg-white p-6 rounded-lg border border-slate-200 shadow-sm">
+                                <div class="chart-container">
+                                    <canvas id="conceptsChart"></canvas>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -137,8 +171,8 @@
             <!-- Experience Section -->
             <section id="experience" class="py-20 px-6 md:px-12 bg-white">
                  <div class="max-w-5xl mx-auto">
-                     <h2 class="text-3xl font-bold text-center text-slate-800">Professional Experience & Projects</h2>
-                     <p class="mt-4 text-center text-slate-600 max-w-2xl mx-auto">
+                     <h2 class="text-3xl font-bold text-slate-800">Professional Experience & Projects</h2>
+                     <p class="mt-4 text-slate-600 max-w-2xl">
                         Here are highlights from my professional career, spanning both cybersecurity and healthcare. Each role has contributed valuable skills that I now apply to my work in information security.
                      </p>
                     <div id="experience-container" class="mt-12 grid md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -203,6 +237,30 @@ document.addEventListener('DOMContentLoaded', function () {
     ];
 
     const experienceData = [
+        {
+            title: "Synology NAS Vulnerability PoC",
+            company: "Personal Project",
+            date: "2024",
+            summary: "A live proof-of-concept demonstrating a critical vulnerability in a Synology NAS system.",
+            details: [
+                "Identified a configuration vulnerability allowing unauthorized access to file shares.",
+                "Developed a simple, live web demonstration to showcase the vulnerability.",
+                "This project highlights my skills in vulnerability research, exploitation, and creating clear, reproducible security findings."
+            ],
+            link: "https://azmolhaque.github.io/synology_poc/"
+        },
+        {
+            title: "Wing.com Unrestricted Maps API Key PoC",
+            company: "Personal Project",
+            date: "2024",
+            summary: "A live proof-of-concept for an unrestricted Google Maps API key on the Wing.com website.",
+            details: [
+                "Discovered and documented an unrestricted API key, a common security misconfiguration.",
+                "Created a live demonstration that exploits the key to show potential misuse, such as denial of service or financial fraud.",
+                "This project demonstrates a real-world finding and the ability to articulate security risks and impact to a business."
+            ],
+            link: "https://azmolhaque.github.io/wing-com-unrestricted-maps-api-key-poc/"
+        },
          {
             title: "Cybersecurity Virtual Experience",
             company: "Mastercard (Forage)",
@@ -254,7 +312,7 @@ document.addEventListener('DOMContentLoaded', function () {
         datasets: [{
             label: 'Proficiency',
             data: [90, 85, 80, 95, 75, 85, 80, 90, 70],
-            backgroundColor: 'rgba(30, 64, 175, 0.7)', // blue-800
+            backgroundColor: 'rgba(30, 64, 175, 0.7)',
             borderColor: 'rgba(30, 64, 175, 1)',
             borderWidth: 1
         }]
@@ -265,7 +323,7 @@ document.addEventListener('DOMContentLoaded', function () {
         datasets: [{
             label: 'Proficiency',
             data: [85, 80, 90, 85, 80, 90, 88, 75],
-            backgroundColor: 'rgba(217, 119, 6, 0.7)', // amber-600
+            backgroundColor: 'rgba(217, 119, 6, 0.7)',
             borderColor: 'rgba(217, 119, 6, 1)',
             borderWidth: 1
         }]
@@ -273,14 +331,29 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // --- Mobile Menu ---
     const mobileMenuButton = document.getElementById('mobile-menu-button');
+    const closeMenuButton = document.getElementById('close-menu-button');
     const mobileMenu = document.getElementById('mobile-menu');
+    const mobileMenuBackdrop = document.getElementById('mobile-menu-backdrop');
+
     mobileMenuButton.addEventListener('click', () => {
-        mobileMenu.classList.toggle('hidden');
+        mobileMenu.classList.remove('mobile-menu-close');
+        mobileMenu.classList.add('mobile-menu-open');
+        mobileMenuBackdrop.classList.remove('hidden');
+    });
+
+    closeMenuButton.addEventListener('click', () => {
+        mobileMenu.classList.remove('mobile-menu-open');
+        mobileMenu.classList.add('mobile-menu-close');
+        mobileMenuBackdrop.classList.add('hidden');
+    });
+
+    mobileMenuBackdrop.addEventListener('click', () => {
+        closeMenuButton.click();
     });
 
     document.querySelectorAll('.nav-link-mobile').forEach(link => {
         link.addEventListener('click', () => {
-            mobileMenu.classList.add('hidden');
+            closeMenuButton.click();
         });
     });
 
@@ -293,7 +366,7 @@ document.addEventListener('DOMContentLoaded', function () {
             <div class="absolute w-8 h-8 bg-slate-200 rounded-full -left-4 border-4 border-white flex items-center justify-center text-lg group-hover:bg-amber-500 group-hover:text-white transition-colors">
                 ${item.icon}
             </div>
-            <div class="p-4 bg-white border border-slate-200 rounded-lg shadow-sm">
+            <div class="p-4 bg-white border border-slate-200 rounded-lg shadow-sm group-hover:shadow-md transition-shadow">
                 <time class="text-sm font-semibold text-amber-600">${item.date}</time>
                 <h3 class="text-lg font-semibold text-slate-800 mt-1">${item.title}</h3>
                 <p class="text-slate-600 mt-2 hidden details">${item.description}</p>
@@ -349,7 +422,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const experienceContainer = document.getElementById('experience-container');
     experienceData.forEach(exp => {
         const card = document.createElement('div');
-        card.className = 'bg-white p-6 rounded-lg border border-slate-200 shadow-sm flex flex-col';
+        card.className = 'bg-white p-6 rounded-lg border border-slate-200 shadow-sm transition-shadow hover:shadow-lg flex flex-col';
         let detailsHtml = '<ul class="mt-2 space-y-2 text-slate-600 list-disc list-inside">';
         exp.details.forEach(detail => {
             detailsHtml += `<li>${detail}</li>`;
@@ -363,7 +436,10 @@ document.addEventListener('DOMContentLoaded', function () {
             <div class="details-content mt-4 hidden">
                 ${detailsHtml}
             </div>
-            <button class="read-more-btn mt-4 text-sm font-semibold text-slate-800 hover:text-amber-600 self-start">Read More ▼</button>
+            <div class="mt-4 flex flex-wrap gap-2">
+                <button class="read-more-btn text-sm font-semibold text-slate-800 hover:text-amber-600 self-start transition-colors">Read More ▼</button>
+                ${exp.link ? `<a href="${exp.link}" target="_blank" class="text-sm font-semibold text-amber-600 hover:text-amber-500 transition-colors">View Live PoC &rarr;</a>` : ''}
+            </div>
         `;
         experienceContainer.appendChild(card);
     });
@@ -371,12 +447,53 @@ document.addEventListener('DOMContentLoaded', function () {
     experienceContainer.addEventListener('click', function(e) {
         if (e.target.classList.contains('read-more-btn')) {
             const btn = e.target;
-            const content = btn.previousElementSibling;
+            const content = btn.parentElement.previousElementSibling;
             const isHidden = content.classList.contains('hidden');
             content.classList.toggle('hidden');
             btn.textContent = isHidden ? 'Read Less ▲' : 'Read More ▼';
         }
     });
+
+    // --- Navigation and Scrollspy Logic ---
+    const sections = document.querySelectorAll('section');
+    const navLinks = document.querySelectorAll('.nav-link, .nav-link-mobile');
+    
+    const updateActiveNavLink = () => {
+        let currentSectionId = '';
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop - 100;
+            const sectionHeight = section.clientHeight;
+            if (window.scrollY >= sectionTop && window.scrollY < sectionTop + sectionHeight) {
+                currentSectionId = section.id;
+            }
+        });
+
+        navLinks.forEach(link => {
+            link.classList.remove('active');
+            if (link.getAttribute('href').includes(currentSectionId)) {
+                link.classList.add('active');
+            }
+        });
+    };
+
+    window.addEventListener('scroll', updateActiveNavLink);
+    updateActiveNavLink();
+    
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const targetId = this.getAttribute('href').substring(1);
+            const targetSection = document.getElementById(targetId);
+            if (targetSection) {
+                window.scrollTo({
+                    top: targetSection.offsetTop,
+                    behavior: 'smooth'
+                });
+                history.pushState(null, '', `#${targetId}`);
+            }
+        });
+    });
+
 });
 </script>
 </body>
