@@ -1,0 +1,383 @@
+<!-- Chosen Palette: Calm Harmony -->
+<!-- Application Structure Plan: A single-page application with a fixed left-sidebar for navigation and a main scrollable content area. This structure allows users to easily jump between key aspects of the profile (Journey, Skills, Experience) without leaving the page. The core of the user flow is an interactive timeline designed to compellingly narrate the unique career transition from healthcare to cybersecurity, which is the strongest differentiator. This is more engaging than a chronological list and encourages user exploration. The dashboard-style skills section and card-based experience section break down complex information into digestible, interactive chunks. -->
+<!-- Visualization & Content Choices: 
+- Career Journey: Report Info -> Chronological job/education history. Goal -> Show change and progression. Viz -> Interactive vertical timeline. Interaction -> Clicking a point reveals detailed information. Justification -> Tells a compelling visual story of the career pivot. Library/Method -> HTML/CSS/JS.
+- Technical Skills: Report Info -> List of technical proficiencies. Goal -> Compare and inform on capabilities. Viz -> Horizontal bar charts. Interaction -> Tooltips on hover for details. Justification -> Quantifies skills visually, making them easier to assess than a text list. Library/Method -> Chart.js/Canvas.
+- Professional Experience: Report Info -> Detailed job descriptions. Goal -> Organize and provide depth. Viz -> Card-based grid layout. Interaction -> "Read More" toggles expanded view. Justification -> Breaks down long text into scannable cards, improving readability and user control. Library/Method -> HTML/CSS/JS.
+-->
+<!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Md. Azmol Haque Rony | Cyber Security Analyst</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc; /* slate-50 */
+            color: #334155; /* slate-700 */
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 250px;
+            max-height: 300px;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 300px;
+                max-height: 350px;
+            }
+        }
+    </style>
+</head>
+<body class="flex min-h-screen">
+    <!-- Sidebar Navigation -->
+    <nav class="w-64 bg-slate-800 text-white p-8 fixed h-full hidden lg:flex flex-col justify-between">
+        <div>
+            <h1 class="text-2xl font-bold text-slate-100">Azmol Haque</h1>
+            <p class="text-sm text-slate-400 mt-1">Cyber Security Analyst</p>
+            <ul class="mt-12 space-y-4">
+                <li><a href="#home" class="nav-link block font-medium text-slate-300 hover:text-white transition-colors">Home</a></li>
+                <li><a href="#journey" class="nav-link block font-medium text-slate-300 hover:text-white transition-colors">My Journey</a></li>
+                <li><a href="#arsenal" class="nav-link block font-medium text-slate-300 hover:text-white transition-colors">Cyber Arsenal</a></li>
+                <li><a href="#experience" class="nav-link block font-medium text-slate-300 hover:text-white transition-colors">Experience</a></li>
+                <li><a href="#contact" class="nav-link block font-medium text-slate-300 hover:text-white transition-colors">Contact</a></li>
+            </ul>
+        </div>
+        <div class="text-sm text-slate-500">
+             &copy; 2025 Md. Azmol Haque Rony
+        </div>
+    </nav>
+
+    <!-- Mobile Header -->
+    <header class="lg:hidden w-full bg-slate-800 text-white p-4 fixed top-0 z-10 shadow-md">
+        <div class="container mx-auto flex justify-between items-center">
+             <h1 class="text-xl font-bold">Azmol Haque</h1>
+             <button id="mobile-menu-button" class="focus:outline-none">
+                <span class="text-3xl">☰</span>
+             </button>
+        </div>
+        <div id="mobile-menu" class="hidden mt-4">
+             <ul class="space-y-2">
+                <li><a href="#home" class="nav-link-mobile block py-2 px-4 rounded hover:bg-slate-700">Home</a></li>
+                <li><a href="#journey" class="nav-link-mobile block py-2 px-4 rounded hover:bg-slate-700">My Journey</a></li>
+                <li><a href="#arsenal" class="nav-link-mobile block py-2 px-4 rounded hover:bg-slate-700">Cyber Arsenal</a></li>
+                <li><a href="#experience" class="nav-link-mobile block py-2 px-4 rounded hover:bg-slate-700">Experience</a></li>
+                <li><a href="#contact" class="nav-link-mobile block py-2 px-4 rounded hover:bg-slate-700">Contact</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="lg:ml-64 flex-1 bg-slate-50">
+        <div class="pt-20 lg:pt-0">
+
+            <!-- Home Section -->
+            <section id="home" class="min-h-screen flex items-center px-6 md:px-12">
+                <div class="max-w-4xl">
+                    <h2 class="text-4xl md:text-6xl font-bold text-slate-800 leading-tight">Md. Azmol Haque Rony</h2>
+                    <h3 class="mt-4 text-xl md:text-2xl text-amber-600 font-medium">Bridging Healthcare & Humanitarian Aid with Resilient Security Solutions</h3>
+                    <p class="mt-6 text-lg text-slate-600 max-w-3xl">
+                        A versatile Cybersecurity Analyst proficient in penetration testing, threat detection, and vulnerability assessments. My unique background in nursing and humanitarian work cultivates a distinct problem-solving approach, enabling me to build security solutions that are not only technically sound but also strategically aligned with business and human impact.
+                    </p>
+                    <div class="mt-8 flex space-x-4">
+                        <a href="https://www.linkedin.com/in/md-azmol-haque-rony" target="_blank" class="bg-slate-800 text-white px-6 py-3 rounded-lg font-semibold hover:bg-slate-700 transition-colors">View LinkedIn</a>
+                        <a href="#contact" class="border-2 border-slate-800 text-slate-800 px-6 py-3 rounded-lg font-semibold hover:bg-slate-200 transition-colors">Contact Me</a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- My Journey Section -->
+            <section id="journey" class="py-20 px-6 md:px-12 bg-white">
+                <div class="max-w-4xl mx-auto">
+                    <h2 class="text-3xl font-bold text-center text-slate-800">My Journey: From Nurse to Cyber Analyst</h2>
+                    <p class="mt-4 text-center text-slate-600 max-w-2xl mx-auto">
+                        My career path is unique, blending the empathy and critical thinking of healthcare with the technical rigor of cybersecurity. This timeline highlights the key milestones in my transition. Click on any event to learn more about the skills and experiences I gained.
+                    </p>
+                    <div id="timeline-container" class="mt-12 relative border-l-4 border-slate-200">
+                        <!-- Timeline items will be injected here by JS -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- Cyber Arsenal Section -->
+            <section id="arsenal" class="py-20 px-6 md:px-12">
+                 <div class="max-w-4xl mx-auto">
+                    <h2 class="text-3xl font-bold text-center text-slate-800">My Cybersecurity Arsenal</h2>
+                    <p class="mt-4 text-center text-slate-600 max-w-2xl mx-auto">
+                        This dashboard provides a visual overview of my technical capabilities. My skills are a combination of formal training through certifications and practical application in simulated and real-world environments.
+                    </p>
+                    <div class="mt-12 space-y-12">
+                        <div>
+                            <h3 class="text-xl font-semibold text-center mb-4 text-slate-700">Security Tools & Platforms</h3>
+                            <div class="chart-container">
+                                <canvas id="toolsChart"></canvas>
+                            </div>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-semibold text-center mb-4 text-slate-700">Programming & Concepts</h3>
+                             <div class="chart-container">
+                                <canvas id="conceptsChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Experience Section -->
+            <section id="experience" class="py-20 px-6 md:px-12 bg-white">
+                 <div class="max-w-5xl mx-auto">
+                     <h2 class="text-3xl font-bold text-center text-slate-800">Professional Experience & Projects</h2>
+                     <p class="mt-4 text-center text-slate-600 max-w-2xl mx-auto">
+                        Here are highlights from my professional career, spanning both cybersecurity and healthcare. Each role has contributed valuable skills that I now apply to my work in information security.
+                     </p>
+                    <div id="experience-container" class="mt-12 grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                        <!-- Experience cards will be injected here by JS -->
+                    </div>
+                 </div>
+            </section>
+
+            <!-- Contact Section -->
+            <section id="contact" class="py-20 px-6 md:px-12">
+                <div class="max-w-xl mx-auto text-center">
+                    <h2 class="text-3xl font-bold text-slate-800">Get In Touch</h2>
+                    <p class="mt-4 text-slate-600">
+                        I'm always open to discussing new opportunities, collaborations, or just connecting with fellow professionals in the field. Feel free to reach out.
+                    </p>
+                    <p class="mt-8 text-lg font-semibold text-slate-700">
+                        Email: <a href="mailto:azmolhaque95@gmail.com" class="text-amber-600 hover:underline">azmolhaque95@gmail.com</a>
+                    </p>
+                    <a href="https://www.linkedin.com/in/md-azmol-haque-rony" target="_blank" class="mt-8 inline-block bg-slate-800 text-white px-8 py-4 rounded-lg font-semibold hover:bg-slate-700 transition-colors">
+                        Connect on LinkedIn
+                    </a>
+                </div>
+            </section>
+
+        </div>
+    </main>
+    
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    // --- Data Store ---
+    const timelineData = [
+        {
+            date: "2025",
+            title: "Google Cybersecurity Certificate",
+            description: "Completed a comprehensive professional certificate covering enterprise-level security paradigms, including threat detection, incident response, and the use of SIEM tools.",
+            icon: '🎓'
+        },
+        {
+            date: "2024",
+            title: "Mastercard Virtual Experience",
+            description: "Served as a simulated analyst on Mastercard's Security Awareness Team. Implemented effective strategies for phishing defense, analyzed security training needs, and developed tailored awareness programs.",
+            icon: '💼'
+        },
+        {
+            date: "2020 - 2022",
+            title: "Humanitarian Nurse, MSF",
+            description: "Delivered critical healthcare services in emergency settings with Médecins Sans Frontières. This role honed my critical thinking, adaptability, and cross-cultural communication skills under high-pressure conditions.",
+            icon: '⚕️'
+        },
+        {
+            date: "2019 - 2020",
+            title: "Medical Center Supervisor",
+            description: "Managed a healthcare team at Pan Pacific Sonargaon, overseeing schedules, ensuring efficient service delivery, and maintaining meticulous documentation of medical supplies and reports, which enhanced organizational efficiency.",
+            icon: '⚕️'
+        },
+        {
+            date: "2013 - 2017",
+            title: "Bachelor of Science in Nursing",
+            description: "Graduated from the University of Rajshahi, building a strong foundational knowledge in healthcare, patient care, and medical ethics.",
+            icon: '🎓'
+        },
+    ];
+
+    const experienceData = [
+         {
+            title: "Cybersecurity Virtual Experience",
+            company: "Mastercard (Forage)",
+            date: "May 2024",
+            summary: "Completed a job simulation as an analyst on the Security Awareness Team.",
+            details: [
+                "Identified and reported security threats, including phishing attempts, to improve organizational security.",
+                "Analyzed security training needs across different business units and implemented tailored security awareness programs.",
+                "Developed practical skills in data analysis, problem-solving, and corporate security training."
+            ]
+        },
+        {
+            title: "Humanitarian Nurse",
+            company: "Médecins Sans Frontières (MSF)",
+            date: "2020 - 2022",
+            summary: "Delivered healthcare in emergency settings with international, multidisciplinary teams.",
+            details: [
+                "Operated in high-stakes environments, requiring rapid decision-making and adaptability.",
+                "Gained strong critical thinking and problem-solving skills which now enhance my cybersecurity work.",
+                "Developed excellent cross-cultural communication skills essential for collaborative security initiatives."
+            ]
+        },
+        {
+            title: "Medical Center Supervisor",
+            company: "Pan Pacific Sonargaon",
+            date: "2019 - 2020",
+            summary: "Managed a healthcare team, developed schedules, and ensured service efficiency.",
+            details: [
+                "Supervised a small medical team, handling staff scheduling and operational management.",
+                "Ensured proper documentation of medical supplies and reports, enhancing organizational efficiency.",
+                "Maintained health-related data digitally to inform operational decisions."
+            ]
+        },
+        {
+            title: "Senior Staff Nurse",
+            company: "Ministry of Health, Bangladesh",
+            date: "2021 - 2024",
+            summary: "Provided holistic healthcare services and maintained critical documentation in an emergency room setting.",
+             details: [
+                "Assessed patient conditions to determine severity and appropriate course of action.",
+                "Responsible for maintaining accurate files, documents, and inventory reports in a fast-paced environment.",
+                "Performed a variety of tasks assigned by authority, demonstrating flexibility and reliability."
+            ]
+        }
+    ];
+
+    const toolsData = {
+        labels: ['Kali Linux', 'Wireshark', 'Burp Suite', 'Nmap', 'Metasploit', 'SIEM Tools', 'Nuclei', 'Linux', 'GCP/AWS'],
+        datasets: [{
+            label: 'Proficiency',
+            data: [90, 85, 80, 95, 75, 85, 80, 90, 70],
+            backgroundColor: 'rgba(30, 64, 175, 0.7)', // blue-800
+            borderColor: 'rgba(30, 64, 175, 1)',
+            borderWidth: 1
+        }]
+    };
+
+    const conceptsData = {
+        labels: ['Python (Scripting)', 'SQL', 'Vulnerability Assessment', 'Penetration Testing', 'Incident Response', 'NIST CSF', 'Network Security', 'Cryptography'],
+        datasets: [{
+            label: 'Proficiency',
+            data: [85, 80, 90, 85, 80, 90, 88, 75],
+            backgroundColor: 'rgba(217, 119, 6, 0.7)', // amber-600
+            borderColor: 'rgba(217, 119, 6, 1)',
+            borderWidth: 1
+        }]
+    };
+
+    // --- Mobile Menu ---
+    const mobileMenuButton = document.getElementById('mobile-menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
+    mobileMenuButton.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+    });
+
+    document.querySelectorAll('.nav-link-mobile').forEach(link => {
+        link.addEventListener('click', () => {
+            mobileMenu.classList.add('hidden');
+        });
+    });
+
+    // --- Timeline Generation ---
+    const timelineContainer = document.getElementById('timeline-container');
+    timelineData.forEach(item => {
+        const div = document.createElement('div');
+        div.className = 'mb-8 ml-10 cursor-pointer group';
+        div.innerHTML = `
+            <div class="absolute w-8 h-8 bg-slate-200 rounded-full -left-4 border-4 border-white flex items-center justify-center text-lg group-hover:bg-amber-500 group-hover:text-white transition-colors">
+                ${item.icon}
+            </div>
+            <div class="p-4 bg-white border border-slate-200 rounded-lg shadow-sm">
+                <time class="text-sm font-semibold text-amber-600">${item.date}</time>
+                <h3 class="text-lg font-semibold text-slate-800 mt-1">${item.title}</h3>
+                <p class="text-slate-600 mt-2 hidden details">${item.description}</p>
+            </div>
+        `;
+        div.addEventListener('click', () => {
+            div.querySelector('.details').classList.toggle('hidden');
+        });
+        timelineContainer.appendChild(div);
+    });
+
+    // --- Chart Generation ---
+    const chartOptions = {
+        indexAxis: 'y',
+        maintainAspectRatio: false,
+        responsive: true,
+        scales: {
+            x: {
+                beginAtZero: true,
+                max: 100,
+                grid: {
+                    color: 'rgba(203, 213, 225, 0.3)'
+                },
+                 ticks: { color: '#475569' }
+            },
+            y: {
+                 grid: {
+                    display: false
+                },
+                 ticks: { color: '#475569', font: { weight: '500' } }
+            }
+        },
+        plugins: {
+            legend: {
+                display: false
+            }
+        }
+    };
+
+    new Chart(document.getElementById('toolsChart'), {
+        type: 'bar',
+        data: toolsData,
+        options: chartOptions
+    });
+
+    new Chart(document.getElementById('conceptsChart'), {
+        type: 'bar',
+        data: conceptsData,
+        options: chartOptions
+    });
+    
+    // --- Experience Card Generation ---
+    const experienceContainer = document.getElementById('experience-container');
+    experienceData.forEach(exp => {
+        const card = document.createElement('div');
+        card.className = 'bg-white p-6 rounded-lg border border-slate-200 shadow-sm flex flex-col';
+        let detailsHtml = '<ul class="mt-2 space-y-2 text-slate-600 list-disc list-inside">';
+        exp.details.forEach(detail => {
+            detailsHtml += `<li>${detail}</li>`;
+        });
+        detailsHtml += '</ul>';
+
+        card.innerHTML = `
+            <h3 class="text-xl font-bold text-slate-800">${exp.title}</h3>
+            <p class="text-amber-600 font-semibold">${exp.company} - ${exp.date}</p>
+            <p class="mt-2 text-slate-600 flex-grow">${exp.summary}</p>
+            <div class="details-content mt-4 hidden">
+                ${detailsHtml}
+            </div>
+            <button class="read-more-btn mt-4 text-sm font-semibold text-slate-800 hover:text-amber-600 self-start">Read More ▼</button>
+        `;
+        experienceContainer.appendChild(card);
+    });
+
+    experienceContainer.addEventListener('click', function(e) {
+        if (e.target.classList.contains('read-more-btn')) {
+            const btn = e.target;
+            const content = btn.previousElementSibling;
+            const isHidden = content.classList.contains('hidden');
+            content.classList.toggle('hidden');
+            btn.textContent = isHidden ? 'Read Less ▲' : 'Read More ▼';
+        }
+    });
+});
+</script>
+</body>
+</html>
