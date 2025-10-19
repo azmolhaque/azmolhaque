@@ -1,560 +1,331 @@
-<!-- Chosen Palette: Calm Harmony -->
-<!-- Application Structure Plan: A single-page application with a fixed left-sidebar for navigation and a main scrollable content area. This structure allows users to easily jump between key aspects of the profile (Journey, Skills, Experience) without leaving the page. The core of the user flow is an interactive timeline designed to compellingly narrate the unique career transition from healthcare to cybersecurity, which is the strongest differentiator. This is more engaging than a chronological list and encourages user exploration. The dashboard-style skills section and card-based experience section break down complex information into digestible, interactive chunks. -->
-<!-- Visualization & Content Choices: 
-- Career Journey: Report Info -> Chronological job/education history. Goal -> Show change and progression. Viz -> Interactive vertical timeline. Interaction -> Clicking a point reveals detailed information. Justification -> Tells a compelling visual story of the career pivot. Library/Method -> HTML/CSS/JS.
-- Technical Skills: Report Info -> List of technical proficiencies. Goal -> Compare and inform on capabilities. Viz -> Horizontal bar charts. Interaction -> Tooltips on hover for details. Justification -> Quantifies skills visually, making them easier to assess than a text list. Library/Method -> Chart.js/Canvas.
-- Professional Experience: Report Info -> Detailed job descriptions. Goal -> Organize and provide depth. Viz -> Card-based grid layout. Interaction -> "Read More" toggles expanded view. Justification -> Breaks down long text into scannable cards, improving readability and user control. Library/Method -> HTML/CSS/JS.
--->
-<!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
+    <title>MD Azmol Haque Rony | Threat Hunter & Crisis Analyst</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Md. Azmol Haque Rony | Cyber Security Analyst</title>
+    <!-- Load Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
-    <style>
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: #f8fafc;
-            color: #334155;
-        }
-        .chart-container {
-            position: relative;
-            width: 100%;
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
-            height: 250px;
-            max-height: 300px;
-        }
-        @media (min-width: 768px) {
-            .chart-container {
-                height: 300px;
-                max-height: 350px;
+    <!-- Use Lucide Icons for high-quality SVG icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;700;800;900&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+          theme: {
+            extend: {
+              colors: {
+                // Technical Dark Theme Colors
+                'theme-dark': '#0f172a',    // Primary background
+                'theme-accent': '#34d399',  // Emerald-400 for vibrant highlights
+                'theme-card': '#1e293b',    // Slate-800 for card backgrounds
+                'theme-text': '#f1f5f9',    // Light text
+                'theme-gray': '#94a3b8',    // Muted gray
+                'theme-danger': '#ef4444',  // Red for high severity
+              },
+              fontFamily: {
+                sans: ['Inter', 'sans-serif'],
+              },
             }
+          }
         }
-        .nav-link.active {
-            color: #fff;
-            font-weight: 700;
+    </script>
+    
+    <style>
+        html { scroll-behavior: smooth; }
+        body { background-color: #0f172a; }
+
+        /* Card Glow Effect for UX */
+        .glow-card {
+            position: relative;
+            overflow: hidden;
+            border: 1px solid #1e293b;
+            transition: all 0.3s ease;
         }
-        .nav-link-mobile.active {
-            background-color: #334155;
-            color: #fff;
+        .glow-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 35px rgba(52, 211, 153, 0.3); /* Stronger shadow */
+            border-color: #34d399;
         }
-        .mobile-menu-open {
-            transform: translateX(0%);
+
+        /* Accent Line Separator */
+        .section-header {
+            position: relative;
         }
-        .mobile-menu-close {
-            transform: translateX(100%);
+        .section-header::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 3px;
+            background-color: #34d399;
+            margin: 10px auto 0;
+            border-radius: 9999px;
         }
-        .mobile-menu-backdrop {
-            background-color: rgba(0, 0, 0, 0.5);
+
+        /* Highlight box for contact details */
+        .contact-box {
+            background-color: #1e293b;
+            border: 2px solid #34d399;
+            box-shadow: 0 0 15px rgba(52, 211, 153, 0.5);
         }
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-        @keyframes slideInRight {
-            from { transform: translateX(100%); }
-            to { transform: translateX(0); }
+        
+        /* Skills grid refinement for mobile */
+        @media (max-width: 640px) {
+            .skill-tag {
+                width: 100%;
+                text-align: center;
+                margin-bottom: 6px;
+            }
         }
     </style>
 </head>
-<body class="flex min-h-screen">
-    <!-- Sidebar Navigation -->
-    <nav class="w-64 bg-slate-800 text-white p-8 fixed h-full hidden lg:flex flex-col justify-between">
-        <div>
-            <h1 class="text-2xl font-bold text-slate-100">Azmol Haque</h1>
-            <p class="text-sm text-slate-400 mt-1">Cyber Security Analyst</p>
-            <ul class="mt-12 space-y-4">
-                <li><a href="#home" class="nav-link block font-medium text-slate-300 hover:text-white transition-colors">Home</a></li>
-                <li><a href="#journey" class="nav-link block font-medium text-slate-300 hover:text-white transition-colors">My Journey</a></li>
-                <li><a href="#arsenal" class="nav-link block font-medium text-slate-300 hover:text-white transition-colors">Cyber Arsenal</a></li>
-                <li><a href="#certificates" class="nav-link block font-medium text-slate-300 hover:text-white transition-colors">Certifications</a></li>
-                <li><a href="#experience" class="nav-link block font-medium text-slate-300 hover:text-white transition-colors">Experience</a></li>
-                <li><a href="#contact" class="nav-link block font-medium text-slate-300 hover:text-white transition-colors">Contact</a></li>
-            </ul>
-        </div>
-        <div class="text-sm text-slate-500">
-             &copy; 2025 Md. Azmol Haque Rony
+
+<body class="text-theme-text font-sans antialiased">
+
+    <!-- Sticky Navigation Bar -->
+    <nav class="sticky top-0 z-50 bg-theme-dark/95 backdrop-blur-sm shadow-2xl">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <a href="#hero" class="text-2xl font-extrabold text-theme-accent hover:text-white transition duration-300 tracking-wider">
+                    <i data-lucide="monitor-dot" class="w-6 h-6 inline-block mr-1"></i> RONY | SECURITY PRACTITIONER
+                </a>
+                <div class="flex space-x-4 text-sm font-medium">
+                    <a href="#impact" class="py-2 hover:text-theme-accent transition duration-200">Impact & Triage</a>
+                    <a href="#skills" class="py-2 hover:text-theme-accent transition duration-200">Tech Stack</a>
+                    <a href="#resilience" class="py-2 hover:text-theme-accent transition duration-200">Resilience</a>
+                    <a href="#certs" class="py-2 hover:text-theme-accent transition duration-200">Certs</a>
+                </div>
+            </div>
         </div>
     </nav>
 
-    <!-- Mobile Header -->
-    <div id="mobile-menu-backdrop" class="fixed inset-0 bg-black bg-opacity-50 z-20 hidden lg:hidden"></div>
-    <header class="lg:hidden w-full bg-slate-800 text-white p-4 fixed top-0 z-30 shadow-md">
-        <div class="container mx-auto flex justify-between items-center">
-             <h1 class="text-xl font-bold">Azmol Haque</h1>
-             <button id="mobile-menu-button" class="focus:outline-none">
-                <span class="text-3xl">☰</span>
-             </button>
+    <!-- Hero Section (High Impact Banner) -->
+    <section id="hero" class="pt-24 pb-20 text-center bg-theme-card/30 border-b border-theme-accent/50">
+        <div class="max-w-4xl mx-auto px-4">
+            
+            <h1 class="text-5xl sm:text-7xl font-extrabold mb-4 leading-tight text-white">
+                MD AZMOL HAQUE RONY
+            </h1>
+            
+            <p class="text-xl sm:text-3xl font-light mb-6 text-theme-accent">
+                Threat Hunting & Vulnerability Management | Operational Resilience Specialist
+            </p>
+            
+            <p class="text-lg md:text-xl max-w-3xl mx-auto text-theme-gray mb-10">
+                A highly disciplined security practitioner with **3+ years of hands-on experience** in identifying, analyzing, and reporting critical vulnerabilities (Google VRP, BMW, Monzo). My technical proficiency is reinforced by a decade of high-stakes **crisis and confidentiality management** (MSF), delivering a unique blend of technical defense, precise incident response, and unwavering integrity.
+            </p>
+
+            <!-- Contact Box & Primary CTA -->
+            <div class="contact-box p-6 rounded-xl max-w-lg mx-auto mb-10">
+                <div class="flex flex-wrap justify-center gap-6 text-lg font-medium mb-6">
+                    <div class="flex items-center text-theme-text"><i data-lucide="mail" class="w-5 h-5 mr-1 text-theme-accent"></i> azmolhaque95@gmail.com</div>
+                    <div class="flex items-center text-theme-text"><i data-lucide="phone" class="w-5 h-5 mr-1 text-theme-accent"></i> +8801717534550</div>
+                </div>
+                <!-- Main Call to Action -->
+                <a href="#impact" class="inline-flex items-center text-lg font-bold py-3 px-8 rounded-full shadow-2xl bg-theme-accent text-theme-dark transition duration-300 hover:bg-white hover:scale-[1.05]">
+                    View Quantified Vulnerability Impact &rarr;
+                </a>
+            </div>
+            
         </div>
-        <div id="mobile-menu" class="fixed top-0 right-0 h-full w-64 bg-slate-800 text-white shadow-xl transition-transform duration-300 ease-in-out transform mobile-menu-close z-40">
-            <div class="p-6">
-                <button id="close-menu-button" class="absolute top-4 right-4 text-3xl">&times;</button>
-                <h1 class="text-2xl font-bold mb-8">Navigation</h1>
-                <ul class="space-y-4">
-                    <li><a href="#home" class="nav-link-mobile block py-2 px-4 rounded transition-colors">Home</a></li>
-                    <li><a href="#journey" class="nav-link-mobile block py-2 px-4 rounded transition-colors">My Journey</a></li>
-                    <li><a href="#arsenal" class="nav-link-mobile block py-2 px-4 rounded transition-colors">Cyber Arsenal</a></li>
-                    <li><a href="#certificates" class="nav-link-mobile block py-2 px-4 rounded transition-colors">Certifications</a></li>
-                    <li><a href="#experience" class="nav-link-mobile block py-2 px-4 rounded transition-colors">Experience</a></li>
-                    <li><a href="#contact" class="nav-link-mobile block py-2 px-4 rounded transition-colors">Contact</a></li>
+    </section>
+
+    <!-- Impact Section (MOST IMPORTANT SECTION) -->
+    <section id="impact" class="py-20 px-4 md:px-8 max-w-6xl mx-auto">
+        <h2 class="section-header text-3xl font-bold text-center mb-12 text-white">
+            <i data-lucide="skull" class="inline-block w-7 h-7 mr-2 text-theme-danger"></i> Quantified Impact: Vulnerability Discovery & Triage
+        </h2>
+
+        <div class="grid md:grid-cols-2 gap-8">
+            
+            <!-- Bug Bounty Summary Card -->
+            <div class="glow-card bg-theme-card p-8 rounded-xl shadow-2xl border-l-4 border-theme-danger">
+                <i data-lucide="monitor-off" class="w-8 h-8 text-theme-danger mb-3"></i>
+                <h3 class="text-2xl font-bold mb-3 text-white">Security Practitioner Experience (2022-Present)</h3>
+                <ul class="list-disc ml-5 text-theme-text space-y-3 text-base">
+                    <li class="font-bold">Threat Hunting: Proactively identified and disclosed <span class="text-theme-danger">**5+ High-to-Exceptional Severity**</span> vulnerabilities to global firms (Google VRP, Flipkart, Monzo, BMW).</li>
+                    <li>**Incident Triage:** Conducted detailed **Root Cause Analysis (RCA)** and produced high-fidelity, triage-ready reports for vendor engineering teams, significantly accelerating patch deployment.</li>
+                    <li>**Scope Proficiency:** Proven hands-on experience in API Misconfiguration, Cross-Site Scripting (XSS), and complex Business Logic Flaws.</li>
                 </ul>
             </div>
-        </div>
-    </header>
 
-    <!-- Main Content -->
-    <main class="lg:ml-64 flex-1 bg-slate-50">
-        <div class="pt-20 lg:pt-0">
-
-            <!-- Home Section -->
-            <section id="home" class="min-h-screen flex items-center px-6 md:px-12 py-16">
-                <div class="max-w-4xl">
-                    <h2 class="text-4xl md:text-6xl font-bold text-slate-800 leading-tight">Md. Azmol Haque Rony</h2>
-                    <h3 class="mt-4 text-xl md:text-2xl text-amber-600 font-medium">Bridging Healthcare & Humanitarian Aid with Resilient Security Solutions</h3>
-                    <p class="mt-6 text-lg text-slate-600 max-w-3xl">
-                        A versatile Cybersecurity Analyst proficient in penetration testing, threat detection, and vulnerability assessments. My unique background in nursing and humanitarian work cultivates a distinct problem-solving approach, enabling me to build security solutions that are not only technically sound but also strategically aligned with business and human impact.
-                    </p>
-                    <div class="mt-8 flex space-x-4">
-                        <a href="https://www.linkedin.com/in/md-azmol-haque-rony" target="_blank" class="bg-slate-800 text-white px-6 py-3 rounded-lg font-semibold hover:bg-slate-700 transition-colors">View LinkedIn</a>
-                        <a href="#contact" class="border-2 border-slate-800 text-slate-800 px-6 py-3 rounded-lg font-semibold hover:bg-slate-200 transition-colors">Contact Me</a>
-                    </div>
-                </div>
-            </section>
-
-            <!-- My Journey Section -->
-            <section id="journey" class="py-20 px-6 md:px-12 bg-white">
-                <div class="max-w-4xl mx-auto">
-                    <h2 class="text-3xl font-bold text-slate-800">My Journey: From Nurse to Cyber Analyst</h2>
-                    <p class="mt-4 text-slate-600 max-w-2xl">
-                        My career path is unique, blending the empathy and critical thinking of healthcare with the technical rigor of cybersecurity. This timeline highlights the key milestones in my transition. Click on any event to learn more about the skills and experiences I gained.
-                    </p>
-                    <div id="timeline-container" class="mt-12 relative border-l-4 border-slate-200">
-                        <!-- Timeline items will be injected here by JS -->
-                    </div>
-                </div>
-            </section>
-
-            <!-- Cyber Arsenal Section -->
-            <section id="arsenal" class="py-20 px-6 md:px-12">
-                 <div class="max-w-4xl mx-auto">
-                    <h2 class="text-3xl font-bold text-slate-800">My Cybersecurity Arsenal</h2>
-                    <p class="mt-4 text-slate-600 max-w-2xl">
-                        This dashboard provides a visual overview of my technical capabilities. My skills are a combination of formal training through certifications and practical application in simulated and real-world environments.
-                    </p>
-                    <div class="mt-12 space-y-12">
-                        <div>
-                            <h3 class="text-xl font-semibold mb-4 text-slate-700">Security Tools & Platforms</h3>
-                            <div class="bg-white p-6 rounded-lg border border-slate-200 shadow-sm">
-                                <div class="chart-container">
-                                    <canvas id="toolsChart"></canvas>
-                                </div>
-                            </div>
-                        </div>
-                        <div>
-                            <h3 class="text-xl font-semibold mb-4 text-slate-700">Programming & Concepts</h3>
-                             <div class="bg-white p-6 rounded-lg border border-slate-200 shadow-sm">
-                                <div class="chart-container">
-                                    <canvas id="conceptsChart"></canvas>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Certificates Section -->
-            <section id="certificates" class="py-20 px-6 md:px-12 bg-white">
-                 <div class="max-w-5xl mx-auto">
-                     <h2 class="text-3xl font-bold text-slate-800">Certifications</h2>
-                     <p class="mt-4 text-slate-600 max-w-2xl">
-                        These certifications demonstrate my commitment to continuous learning and my proficiency in key cybersecurity domains.
-                     </p>
-                    <div id="certificates-container" class="mt-12 grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                        <!-- Certificate cards will be injected here by JS -->
-                    </div>
-                 </div>
-            </section>
-
-            <!-- Experience Section -->
-            <section id="experience" class="py-20 px-6 md:px-12">
-                 <div class="max-w-5xl mx-auto">
-                     <h2 class="text-3xl font-bold text-slate-800">Professional Experience & Projects</h2>
-                     <p class="mt-4 text-slate-600 max-w-2xl">
-                        Here are highlights from my professional career, spanning both cybersecurity and healthcare. Each role has contributed valuable skills that I now apply to my work in information security.
-                     </p>
-                    <div id="experience-container" class="mt-12 grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                        <!-- Experience cards will be injected here by JS -->
-                    </div>
-                 </div>
-            </section>
-
-            <!-- Contact Section -->
-            <section id="contact" class="py-20 px-6 md:px-12 bg-white">
-                <div class="max-w-xl mx-auto text-center">
-                    <h2 class="text-3xl font-bold text-slate-800">Get In Touch</h2>
-                    <p class="mt-4 text-slate-600">
-                        I'm always open to discussing new opportunities, collaborations, or just connecting with fellow professionals in the field. Feel free to reach out.
-                    </p>
-                    <p class="mt-8 text-lg font-semibold text-slate-700">
-                        Email: <a href="mailto:azmolhaque95@gmail.com" class="text-amber-600 hover:underline">azmolhaque95@gmail.com</a>
-                    </p>
-                    <a href="https://www.linkedin.com/in/md-azmol-haque-rony" target="_blank" class="mt-8 inline-block bg-slate-800 text-white px-8 py-4 rounded-lg font-semibold hover:bg-slate-700 transition-colors">
-                        Connect on LinkedIn
+            <!-- PoC Projects Group (Risk Quantification) -->
+            <div class="space-y-6">
+                <!-- PoC 1 Card -->
+                <div class="glow-card bg-theme-card p-6 rounded-xl shadow-xl border-l-4 border-yellow-500">
+                    <h4 class="text-xl font-semibold text-white mb-2">PoC: Synology Maps API Key Exposure</h4>
+                    <p class="text-theme-gray text-sm mb-3">**Risk Quantified:** Demonstrated unrestricted Places API abuse, proving potential for **financial quota exhaustion** and PII/metadata leakage. Identified a critical failure in client-side access control.</p>
+                    <a href="https://azmolhaque.github.io/synology_poc/" target="_blank" class="inline-flex items-center text-theme-accent hover:underline font-medium text-sm transition duration-300">
+                        View Live PoC <i data-lucide="external-link" class="w-4 h-4 ml-1"></i>
                     </a>
                 </div>
-            </section>
 
+                <!-- PoC 2 Card -->
+                <div class="glow-card bg-theme-card p-6 rounded-xl shadow-xl border-l-4 border-blue-500">
+                    <h4 class="text-xl font-semibold text-white mb-2">PoC: Wing.com Geocoding API Key Leak</h4>
+                    <p class="text-theme-gray text-sm mb-3">**Risk Quantified:** Verified unauthorized usage of a Geocoding API key, illustrating a direct financial impact through unauthorized consumption of paid cloud services and data processing.</p>
+                    <a href="https://azmolhaque.github.io/wing-com-unrestricted-maps-api-key-poc/" target="_blank" class="inline-flex items-center text-theme-accent hover:underline font-medium text-sm transition duration-300">
+                        View Live PoC <i data-lucide="external-link" class="w-4 h-4 ml-1"></i>
+                    </a>
+                </div>
+            </div>
         </div>
-    </main>
-    
-<script>
-document.addEventListener('DOMContentLoaded', function () {
-    // --- Data Store ---
-    const timelineData = [
-        {
-            date: "2025",
-            title: "Google Cybersecurity Certificate",
-            description: "Completed a comprehensive professional certificate covering enterprise-level security paradigms, including threat detection, incident response, and the use of SIEM tools. The curriculum also provided hands-on experience in Python, Linux, and SQL, essential for automated security tasks.",
-            icon: '🎓'
-        },
-        {
-            date: "2024",
-            title: "TryHackMe Advent of Cyber 2024",
-            description: "Completed 24 cyber security challenges, demonstrating a solid understanding of fundamental concepts including web exploitation, network analysis, and vulnerability assessment. This achievement highlights a commitment to continuous, practical learning.",
-            icon: '💻'
-        },
-        {
-            date: "2024",
-            title: "Mastercard Virtual Experience",
-            description: "Served as a simulated analyst on Mastercard's Security Awareness Team. Implemented effective strategies for phishing defense, analyzed security training needs, and developed tailored awareness programs.",
-            icon: '💼'
-        },
-        {
-            date: "2020 - 2022",
-            title: "Humanitarian Nurse, MSF",
-            description: "Delivered critical healthcare services in emergency settings with Médecins Sans Frontières. This role honed my critical thinking, adaptability, and cross-cultural communication skills under high-pressure conditions.",
-            icon: '⚕️'
-        },
-        {
-            date: "2019 - 2020",
-            title: "Medical Center Supervisor",
-            description: "Managed a healthcare team at Pan Pacific Sonargaon, overseeing schedules, ensuring efficient service delivery, and maintaining meticulous documentation of medical supplies and reports, which enhanced organizational efficiency.",
-            icon: '⚕️'
-        },
-        {
-            date: "2013 - 2017",
-            title: "Bachelor of Science in Nursing",
-            description: "Graduated from the University of Rajshahi, building a strong foundational knowledge in healthcare, patient care, and medical ethics.",
-            icon: '🎓'
-        },
-    ];
+    </section>
 
-    const certificatesData = [
-        {
-            title: "Google Cybersecurity Certificate",
-            issuer: "Coursera",
-            description: "A professional certificate covering foundational and advanced cybersecurity concepts, from network security to incident response and the use of SIEM tools. It includes hands-on training with Python, Linux, and SQL.",
-            link: "https://coursera.org/share/d641087f3f176f59f575b47c17b7f46c"
-        },
-        {
-            title: "Mastercard Cybersecurity Virtual Experience",
-            issuer: "Forage",
-            description: "A job simulation where I acted as an analyst, developing effective strategies for phishing defense and creating tailored security awareness programs for a global enterprise.",
-            link: "https://forage-uploads-prod.s3.amazonaws.com/completion-certificates/mastercard/vcKAB5yYAgvemepGQ_Mastercard_JMsHG793ksfGqPq9v_1715191717515_completion_certificate.pdf"
-        },
-        {
-            title: "TryHackMe Advent of Cyber 2024",
-            issuer: "TryHackMe",
-            description: "Completed 24 cyber security challenges, demonstrating a solid understanding of fundamental concepts including web exploitation, network analysis, and vulnerability assessment.",
-            link: "https://tryhackme-certificates.s3-eu-west-1.amazonaws.com/THM-BB6YTOI6RT.pdf"
-        }
-    ];
+    <!-- Skills & Tools Section -->
+    <section id="skills" class="py-16 px-4 md:px-8 max-w-6xl mx-auto bg-theme-card/50 rounded-lg shadow-inner">
+        <h2 class="section-header text-3xl font-bold text-center mb-10 text-white">
+            <i data-lucide="layers-3" class="inline-block w-7 h-7 mr-2 text-theme-accent"></i> Core Technical Stack & Fundamentals
+        </h2>
 
-    const experienceData = [
-        {
-            title: "Synology NAS Vulnerability PoC",
-            company: "Personal Project",
-            date: "2025",
-            summary: "A live proof-of-concept demonstrating a critical vulnerability in a Synology NAS system.",
-            details: [
-                "Identified a configuration vulnerability allowing unauthorized access to file shares.",
-                "Developed a simple, live web demonstration to showcase the vulnerability.",
-                "This project highlights my skills in vulnerability research, exploitation, and creating clear, reproducible security findings."
-            ],
-            link: "https://azmolhaque.github.io/synology_poc/"
-        },
-        {
-            title: "Google VRP Unrestricted Maps API Key PoC",
-            company: "Personal Project",
-            date: "2025",
-            summary: "A live proof-of-concept for an unrestricted Google Maps API key on the Wing.com website.",
-            details: [
-                "Discovered and documented an unrestricted API key, a common security misconfiguration.",
-                "Created a live demonstration that exploits the key to show potential misuse, such as denial of service or financial fraud.",
-                "This project demonstrates a real-world finding and the ability to articulate security risks and impact to a business."
-            ],
-            link: "https://azmolhaque.github.io/wing-com-unrestricted-maps-api-key-poc/"
-        },
-         {
-            title: "Cybersecurity Virtual Experience",
-            company: "Mastercard (Forage)",
-            date: "May 2024",
-            summary: "Completed a job simulation as an analyst on the Security Awareness Team.",
-            details: [
-                "Identified and reported security threats, including phishing attempts, to improve organizational security.",
-                "Analyzed security training needs across different business units and implemented tailored security awareness programs.",
-                "Developed practical skills in data analysis, problem-solving, and security training."
-            ]
-        },
-        {
-            title: "Humanitarian Nurse & Senior Staff Nurse",
-            company: "Médecins Sans Frontières (MSF) & Ministry of Health, Bangladesh",
-            date: "2020 - 2024",
-            summary: "Provided critical healthcare and supervisory services in both emergency humanitarian and national healthcare settings.",
-            details: [
-                "Delivered healthcare services in emergency settings while working with international, multidisciplinary teams.",
-                "Gained strong critical thinking skills and adaptability, which now enhance my cybersecurity work.",
-                "Developed excellent cross-cultural communication skills essential for collaborative security initiatives.",
-                "Provided holistic healthcare services and maintained critical documentation in an emergency room setting.",
-                "Responsible for maintaining accurate files, documents, and inventory reports in a fast-paced environment."
-            ]
-        },
-        {
-            title: "Oncology Nurse",
-            company: "Cancer Center, Combined Military Hospital, Dhaka",
-            date: "2018 - 2023",
-            summary: "Provided specialized care to oncology patients, including end-of-life care and chemotherapy administration.",
-            details: [
-                "Prepared and administered chemotherapy according to protocol with proper caution.",
-                "Educated family members to ensure proper diet and hygiene for oncology patients.",
-                "Provided psychological support and health education to patients upon discharge."
-            ]
-        },
-        {
-            title: "Medical Center Supervisor",
-            company: "Pan Pacific Sonargaon",
-            date: "2019 - 2020",
-            summary: "Managed a healthcare team, developed schedules, and ensured service efficiency.",
-            details: [
-                "Supervised a small medical team, handling staff scheduling and operational management.",
-                "Ensured proper documentation of medical supplies and reports, enhancing organizational efficiency.",
-                "Maintained health-related data digitally to inform operational decisions."
-            ]
-        }
-    ];
-
-    const toolsData = {
-        labels: ['Kali Linux', 'Wireshark', 'Burp Suite', 'Nmap', 'Metasploit', 'SIEM Tools', 'Nuclei', 'Linux', 'GCP/AWS'],
-        datasets: [{
-            label: 'Proficiency',
-            data: [90, 85, 80, 95, 75, 85, 80, 90, 70],
-            backgroundColor: 'rgba(30, 64, 175, 0.7)',
-            borderColor: 'rgba(30, 64, 175, 1)',
-            borderWidth: 1
-        }]
-    };
-
-    const conceptsData = {
-        labels: ['Python (Scripting)', 'SQL', 'Vulnerability Assessment', 'Penetration Testing', 'Incident Response', 'NIST CSF', 'Network Security', 'Cryptography'],
-        datasets: [{
-            label: 'Proficiency',
-            data: [85, 80, 90, 85, 80, 90, 88, 75],
-            backgroundColor: 'rgba(217, 119, 6, 0.7)',
-            borderColor: 'rgba(217, 119, 6, 1)',
-            borderWidth: 1
-        }]
-    };
-
-    // --- Mobile Menu ---
-    const mobileMenuButton = document.getElementById('mobile-menu-button');
-    const closeMenuButton = document.getElementById('close-menu-button');
-    const mobileMenu = document.getElementById('mobile-menu');
-    const mobileMenuBackdrop = document.getElementById('mobile-menu-backdrop');
-
-    mobileMenuButton.addEventListener('click', () => {
-        mobileMenu.classList.remove('mobile-menu-close');
-        mobileMenu.classList.add('mobile-menu-open');
-        mobileMenuBackdrop.classList.remove('hidden');
-    });
-
-    closeMenuButton.addEventListener('click', () => {
-        mobileMenu.classList.remove('mobile-menu-open');
-        mobileMenu.classList.add('mobile-menu-close');
-        mobileMenuBackdrop.classList.add('hidden');
-    });
-
-    mobileMenuBackdrop.addEventListener('click', () => {
-        closeMenuButton.click();
-    });
-
-    document.querySelectorAll('.nav-link-mobile').forEach(link => {
-        link.addEventListener('click', () => {
-            closeMenuButton.click();
-        });
-    });
-
-    // --- Timeline Generation ---
-    const timelineContainer = document.getElementById('timeline-container');
-    timelineData.forEach(item => {
-        const div = document.createElement('div');
-        div.className = 'mb-8 ml-10 cursor-pointer group';
-        div.innerHTML = `
-            <div class="absolute w-8 h-8 bg-slate-200 rounded-full -left-4 border-4 border-white flex items-center justify-center text-lg group-hover:bg-amber-500 group-hover:text-white transition-colors">
-                ${item.icon}
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-6 text-center">
+            
+            <!-- Category 1: SOC & ANALYSIS -->
+            <div class="bg-theme-dark p-5 rounded-lg shadow-xl border border-theme-card">
+                <h3 class="text-xl font-semibold text-theme-accent mb-3">SOC & Analysis</h3>
+                <div class="flex flex-wrap justify-center gap-2">
+                    <span class="bg-gray-700 text-gray-200 text-sm px-3 py-1 rounded-full skill-tag">SIEM Tools (Conceptual)</span>
+                    <span class="bg-gray-700 text-gray-200 text-sm px-3 py-1 rounded-full skill-tag">Detection & Response (D&R)</span>
+                    <span class="bg-gray-700 text-gray-200 text-sm px-3 py-1 rounded-full skill-tag">Intrusion Detection (IDS)</span>
+                </div>
             </div>
-            <div class="p-4 bg-white border border-slate-200 rounded-lg shadow-sm group-hover:shadow-md transition-shadow">
-                <time class="text-sm font-semibold text-amber-600">${item.date}</time>
-                <h3 class="text-lg font-semibold text-slate-800 mt-1">${item.title}</h3>
-                <p class="text-slate-600 mt-2 hidden details">${item.description}</p>
+
+            <!-- Category 2: VULNERABILITY ASSESSMENT -->
+            <div class="bg-theme-dark p-5 rounded-lg shadow-xl border border-theme-card">
+                <h3 class="text-xl font-semibold text-theme-accent mb-3">Vulnerability Assessment</h3>
+                <div class="flex flex-wrap justify-center gap-2">
+                    <span class="bg-gray-700 text-gray-200 text-sm px-3 py-1 rounded-full skill-tag">Burp Suite (Traffic/Testing)</span>
+                    <span class="bg-gray-700 text-gray-200 text-sm px-3 py-1 rounded-full skill-tag">Nmap / Port Scanning</span>
+                    <span class="bg-gray-700 text-gray-200 text-sm px-3 py-1 rounded-full skill-tag">Wireshark (Analysis)</span>
+                    <span class="bg-gray-700 text-gray-200 text-sm px-3 py-1 rounded-full skill-tag">Cloud Security (GCP/AWS Theory)</span>
+                </div>
             </div>
-        `;
-        div.addEventListener('click', () => {
-            div.querySelector('.details').classList.toggle('hidden');
-        });
-        timelineContainer.appendChild(div);
-    });
+            
+            <!-- Category 3: AUTOMATION & OS -->
+            <div class="bg-theme-dark p-5 rounded-lg shadow-xl border border-theme-card">
+                <h3 class="text-xl font-semibold text-theme-accent mb-3">Automation & OS</h3>
+                <div class="flex flex-wrap justify-center gap-2">
+                    <span class="bg-gray-700 text-gray-200 text-sm px-3 py-1 rounded-full skill-tag">Python (Security Scripting)</span>
+                    <span class="bg-gray-700 text-gray-200 text-sm px-3 py-1 rounded-full skill-tag">SQL (Data Query & Logging)</span>
+                    <span class="bg-gray-700 text-gray-200 text-sm px-3 py-1 rounded-full skill-tag">Linux / Bash Scripting</span>
+                </div>
+            </div>
 
-    // --- Chart Generation ---
-    const chartOptions = {
-        indexAxis: 'y',
-        maintainAspectRatio: false,
-        responsive: true,
-        scales: {
-            x: {
-                beginAtZero: true,
-                max: 100,
-                grid: {
-                    color: 'rgba(203, 213, 225, 0.3)'
-                },
-                 ticks: { color: '#475569' }
-            },
-            y: {
-                 grid: {
-                    display: false
-                },
-                 ticks: { color: '#475569', font: { weight: '500' } }
-            }
-        },
-        plugins: {
-            legend: {
-                display: false
-            }
-        }
-    };
+            <!-- Category 4: FRAMEWORKS & POLICY -->
+            <div class="bg-theme-dark p-5 rounded-lg shadow-xl border border-theme-card">
+                <h3 class="text-xl font-semibold text-theme-accent mb-3">Frameworks & Policy</h3>
+                <div class="flex flex-wrap justify-center gap-2">
+                    <span class="bg-gray-700 text-gray-200 text-sm px-3 py-1 rounded-full skill-tag">NIST CSF (Identify, Detect, Respond)</span>
+                    <span class="bg-gray-700 text-gray-200 text-sm px-3 py-1 rounded-full skill-tag">Security Awareness Training</span>
+                    <span class="bg-gray-700 text-gray-200 text-sm px-3 py-1 rounded-full skill-tag">Confidentiality & Integrity Principles</span>
+                </div>
+            </div>
+        </div>
+    </section>
 
-    new Chart(document.getElementById('toolsChart'), {
-        type: 'bar',
-        data: toolsData,
-        options: chartOptions
-    });
+    <!-- Unique Experience Section (MSF Advantage) -->
+    <section id="resilience" class="py-20 px-4 md:px-8 max-w-6xl mx-auto">
+        <h2 class="section-header text-3xl font-bold text-center mb-10 text-white">
+            <i data-lucide="shield" class="inline-block w-7 h-7 mr-2 text-theme-accent"></i> Operational Resilience: The Crisis Management Advantage
+        </h2>
+        
+        <p class="text-lg text-theme-gray mb-10 text-center max-w-4xl mx-auto">
+            My experience as a **Security Advisor and Humanitarian Professional (MSF)** provides highly valuable, non-technical capabilities that define operational resilience in a security context:
+        </p>
 
-    new Chart(document.getElementById('conceptsChart'), {
-        type: 'bar',
-        data: conceptsData,
-        options: chartOptions
-    });
-    
-    // --- Certificate Card Generation ---
-    const certificatesContainer = document.getElementById('certificates-container');
-    certificatesData.forEach(cert => {
-        const card = document.createElement('div');
-        card.className = 'bg-white p-6 rounded-lg border border-slate-200 shadow-sm transition-shadow hover:shadow-lg flex flex-col';
-        card.innerHTML = `
-            <h3 class="text-xl font-bold text-slate-800">${cert.title}</h3>
-            <p class="text-amber-600 font-semibold">${cert.issuer}</p>
-            <p class="mt-2 text-slate-600 flex-grow">${cert.description}</p>
-            <a href="${cert.link}" target="_blank" class="mt-4 text-sm font-semibold text-amber-600 hover:text-amber-500 transition-colors self-start">
-                View Certificate &rarr;
+        <div class="grid md:grid-cols-3 gap-8">
+            <!-- Feature Card 1: Incident Response Analogy -->
+            <div class="glow-card bg-theme-card p-6 rounded-xl shadow-xl border-t-4 border-red-500">
+                <i data-lucide="gauge" class="w-8 h-8 text-red-500 mb-3"></i>
+                <h4 class="text-xl font-semibold text-white mb-2">Pressure Management & Decision Making</h4>
+                <p class="text-theme-gray text-sm">Managed high-stress situations in Emergency Rooms and ICUs. This translates directly to **rapid, calm assessment, disciplined decision-making**, and accurate execution of containment protocols during an active security incident.</p>
+            </div>
+
+            <!-- Feature Card 2: Confidentiality & Integrity -->
+            <div class="glow-card bg-theme-card p-6 rounded-xl shadow-xl border-t-4 border-yellow-500">
+                <i data-lucide="fingerprint" class="w-8 h-8 text-yellow-500 mb-3"></i>
+                <h4 class="text-xl font-semibold text-white mb-2">Unwavering Confidentiality & Compliance</h4>
+                <p class="text-theme-gray text-sm">Responsible for sensitive **patient health information (PHI)** and operational intelligence. Guaranteed strict adherence to policy, demonstrating an intrinsic understanding of data integrity and discretion required for compliance roles.</p>
+            </div>
+
+            <!-- Feature Card 3: Communication & Policy -->
+            <div class="glow-card bg-theme-card p-6 rounded-xl shadow-xl border-t-4 border-cyan-500">
+                <i data-lucide="message-square-text" class="w-8 h-8 text-cyan-500 mb-3"></i>
+                <h4 class="text-xl font-semibold text-white mb-2">Cross-Functional Policy Adherence</h4>
+                <p class="text-theme-gray text-sm">As an MSF Security Advisor, I translated complex security protocols into actionable communication for non-technical, international teams, ensuring high **accountability and policy acceptance** across organizational boundaries.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certifications Section -->
+    <section id="certs" class="py-16 px-4 md:px-8 max-w-6xl mx-auto bg-theme-card/50 rounded-lg shadow-inner">
+        <h2 class="section-header text-3xl font-bold text-center mb-10 text-white">
+            <i data-lucide="trophy" class="inline-block w-7 h-7 mr-2 text-theme-accent"></i> Verifiable Certifications & Technical Proof
+        </h2>
+
+        <div class="grid md:grid-cols-3 gap-8">
+            
+            <!-- Cert Card 1: Google -->
+            <div class="glow-card bg-theme-dark p-6 rounded-xl shadow-xl border border-theme-card">
+                <h3 class="text-xl font-semibold text-theme-accent mb-2">Google Cybersecurity Professional Cert.</h3>
+                <p class="text-sm text-theme-gray mb-4">Coursera | Completion: Jan 2025</p>
+                <ul class="list-disc ml-5 text-theme-text text-sm space-y-1">
+                  <li>8-course mastery of **Python Automation, Detection & Response, Linux, and SIEM/IDS** fundamentals.</li>
+                </ul>
+                <a href="https://coursera.org/verify/professionals-cert/9EMHGS2G0UAM" target="_blank" class="mt-4 inline-flex items-center text-white bg-theme-accent/20 hover:bg-theme-accent/30 px-3 py-1 rounded-full text-sm font-medium transition duration-300">
+                    Verify Credentials
+                </a>
+            </div>
+
+            <!-- Cert Card 2: TryHackMe -->
+            <div class="glow-card bg-theme-dark p-6 rounded-xl shadow-xl border border-theme-card">
+                <h3 class="text-xl font-semibold text-theme-accent mb-2">Advent of Cyber 2024 Completion (THM)</h3>
+                <p class="text-sm text-theme-gray mb-4">TryHackMe | Completion: Dec 2024</p>
+                <ul class="list-disc ml-5 text-theme-text text-sm space-y-1">
+                    <li>Completed **24 practical, hands-on challenges** in forensics, web exploitation, and defensive strategies.</li>
+                </ul>
+                <a href="https://tryhackme-certificates.s3-eu-west-1.amazonaws.com/THM-BB6YTOI6RT.pdf" target="_blank" class="mt-4 inline-flex items-center text-white bg-theme-accent/20 hover:bg-theme-accent/30 px-3 py-1 rounded-full text-sm font-medium transition duration-300">
+                    View Certificate <i data-lucide="download" class="w-4 h-4 ml-1"></i>
+                </a>
+            </div>
+            
+            <!-- Cert Card 3: Mastercard -->
+            <div class="glow-card bg-theme-dark p-6 rounded-xl shadow-xl border border-theme-card">
+                <h3 class="text-xl font-semibold text-theme-accent mb-2">Mastercard Cybersecurity Job Simulation</h3>
+                <p class="text-sm text-theme-gray mb-4">Forage | Completion: May 2024</p>
+                <ul class="list-disc ml-5 text-theme-text text-sm space-y-1">
+                    <li>Practical experience in phishing defense design and interpreting security awareness results.</li>
+                </ul>
+                <a href="https://forage-uploads-prod.s3.amazonaws.com/completion-certificates/mastercard/vcKAB5yYAgvemepGQ_Mastercard_JMsHG793ksfGqPq9v_1715191717515_completion_certificate.pdf" target="_blank" class="mt-4 inline-flex items-center text-white bg-theme-accent/20 hover:bg-theme-accent/30 px-3 py-1 rounded-full text-sm font-medium transition duration-300">
+                    View Certificate <i data-lucide="download" class="w-4 h-4 ml-1"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer & Final CTA -->
+    <footer class="bg-theme-card py-12 text-center border-t border-theme-accent/50">
+        <div class="max-w-4xl mx-auto px-4">
+            <h3 class="text-3xl font-bold mb-4 text-theme-accent">Final Step: View the full Resume.</h3>
+            <p class="text-theme-gray mb-8 max-w-md mx-auto">
+                My full resume provides the complete professional timeline and detailed project descriptions.
+            </p>
+            
+            <!-- Final CTA: Download Resume (User must replace the # with their actual resume PDF link) -->
+            <a href="#" class="inline-flex items-center text-lg font-bold py-3 px-10 rounded-full shadow-2xl bg-theme-accent text-theme-dark transition duration-300 hover:bg-white hover:scale-[1.02]">
+                <i data-lucide="file-text" class="w-5 h-5 mr-2"></i> Download Full Resume (PDF)
             </a>
-        `;
-        certificatesContainer.appendChild(card);
-    });
+            
+            <p class="text-xs text-theme-gray mt-8">Bogura, Bangladesh | GitHub: Cyber-Safety</p>
+            <p class="text-xs text-theme-gray mt-2">&copy; 2025 MD Azmol Haque Rony. All rights reserved.</p>
+        </div>
+    </footer>
 
-    // --- Experience Card Generation ---
-    const experienceContainer = document.getElementById('experience-container');
-    experienceData.forEach(exp => {
-        const card = document.createElement('div');
-        card.className = 'bg-white p-6 rounded-lg border border-slate-200 shadow-sm transition-shadow hover:shadow-lg flex flex-col';
-        let detailsHtml = '<ul class="mt-2 space-y-2 text-slate-600 list-disc list-inside">';
-        exp.details.forEach(detail => {
-            detailsHtml += `<li>${detail}</li>`;
-        });
-        detailsHtml += '</ul>';
+    <script>
+        // Initialize Lucide Icons after the DOM loads
+        lucide.createIcons();
+    </script>
 
-        card.innerHTML = `
-            <h3 class="text-xl font-bold text-slate-800">${exp.title}</h3>
-            <p class="text-amber-600 font-semibold">${exp.company} - ${exp.date}</p>
-            <p class="mt-2 text-slate-600 flex-grow">${exp.summary}</p>
-            <div class="details-content mt-4 hidden">
-                ${detailsHtml}
-            </div>
-            <div class="mt-4 flex flex-wrap gap-2">
-                <button class="read-more-btn text-sm font-semibold text-slate-800 hover:text-amber-600 self-start transition-colors">Read More ▼</button>
-                ${exp.link ? `<a href="${exp.link}" target="_blank" class="text-sm font-semibold text-amber-600 hover:text-amber-500 transition-colors">View Live PoC &rarr;</a>` : ''}
-            </div>
-        `;
-        experienceContainer.appendChild(card);
-    });
-
-    experienceContainer.addEventListener('click', function(e) {
-        if (e.target.classList.contains('read-more-btn')) {
-            const btn = e.target;
-            const content = btn.parentElement.previousElementSibling;
-            const isHidden = content.classList.contains('hidden');
-            content.classList.toggle('hidden');
-            btn.textContent = isHidden ? 'Read Less ▲' : 'Read More ▼';
-        }
-    });
-
-    // --- Navigation and Scrollspy Logic ---
-    const sections = document.querySelectorAll('section');
-    const navLinks = document.querySelectorAll('.nav-link, .nav-link-mobile');
-    
-    const updateActiveNavLink = () => {
-        let currentSectionId = '';
-        sections.forEach(section => {
-            const sectionTop = section.offsetTop - 100;
-            const sectionHeight = section.clientHeight;
-            if (window.scrollY >= sectionTop && window.scrollY < sectionTop + sectionHeight) {
-                currentSectionId = section.id;
-            }
-        });
-
-        navLinks.forEach(link => {
-            link.classList.remove('active');
-            if (link.getAttribute('href').includes(currentSectionId)) {
-                link.classList.add('active');
-            }
-        });
-    };
-
-    window.addEventListener('scroll', updateActiveNavLink);
-    updateActiveNavLink();
-    
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-            e.preventDefault();
-            const targetId = this.getAttribute('href').substring(1);
-            const targetSection = document.getElementById(targetId);
-            if (targetSection) {
-                window.scrollTo({
-                    top: targetSection.offsetTop,
-                    behavior: 'smooth'
-                });
-                history.pushState(null, '', `#${targetId}`);
-            }
-        });
-    });
-
-});
-</script>
 </body>
 </html>
