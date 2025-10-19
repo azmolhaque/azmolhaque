@@ -376,7 +376,7 @@
                         },
                         scales: {
                             r: {
-                                angleLines: { color: '#30363d' },
+                                angleLines: { color: '#3036d' },
                                 grid: { color: '#30363d' },
                                 pointLabels: { color: '#c9d1d9', font: {size: 10}},
                                 ticks: {
