@@ -1,254 +1,203 @@
-import React, { useState, useEffect, useCallback } from 'react';
-import { Shield, BarChart, AlertTriangle, Activity, Zap, Server, Clock } from 'lucide-react';
+<div align="center">
+<!-- Title & Professional Identity -->
+<h1 style="border-bottom: 2px solid #58a6ff; padding-bottom: 10px;">
+🛡️ Md Azmol Haque Rony | Threat Hunter & Resilience Specialist
+</h1>
+<h3>Cyber Security Analyst | Incident Response | Vulnerability Management</h3>
 
-// --- Utility Functions and Initial Data ---
+<!-- Badges & Links (Dynamic/Static) -->
 
-// Helper to generate a random IP address for simulation
-const generateRandomIP = () => {
-  return Array(4).fill(0).map(() => Math.floor(Math.random() * 256)).join('.');
-};
+<p>
+<a href="https://www.linkedin.com/in/md-azmol-haque-rony">
+<img src="https://www.google.com/search?q=https://img.shields.io/badge/LinkedIn-Connect-0A66C2%3Fstyle%3Dfor-the-badge%26logo%3Dlinkedin%26logoColor%3Dwhite" alt="LinkedIn Profile"/>
+</a>
+<a href="mailto:azmolhaque95@gmail.com">
+<img src="https://www.google.com/search?q=https://img.shields.io/badge/Email-Contact-D14836%3Fstyle%3Dfor-the-badge%26logo%3Dgmail%26logoColor%3Dwhite" alt="Email Address"/>
+</a>
+<a href="https://azmolhaque.github.io/azmolhaque/azmolhaque.html" target="_blank">
+<img src="https://www.google.com/search?q=https://img.shields.io/badge/Portfolio-Live_POCs-FF6F00%3Fstyle%3Dfor-the-badge%26logo%3Dnetlify%26logoColor%3Dwhite" alt="Portfolio Link"/>
+</a>
+</p>
 
-// Mock initial metrics
-const initialMetrics = {
-  attacksBlocked: 12450,
-  criticalAlerts: 18,
-  totalTraffic: 5.2, // GB
-  threatLevel: 3, // 1 (Low) to 5 (Critical)
-};
+<!-- GitHub Stats (azmolhaque) -->
 
-// Mock list of threat types and severities
-const THREAT_TYPES = ['Phishing Attempt', 'DDoS Attack', 'SQL Injection', 'Malware Download', 'Port Scan'];
-const SEVERITIES = ['High', 'Medium', 'Low', 'Critical'];
+<p>
+<img src="https://www.google.com/search?q=https://github-readme-stats.vercel.app/api%3Fusername%3Dazmolhaque%26show_icons%3Dtrue%26theme%3Ddark%26hide_border%3Dtrue%26count_private%3Dtrue" alt="GitHub Stats" />
+</p>
+</div>
 
-// Function to generate a new simulated threat
-const generateNewThreat = () => {
-  const severityIndex = Math.floor(Math.random() * SEVERITIES.length);
-  return {
-    id: Date.now() + Math.random(),
-    timestamp: new Date().toLocaleTimeString(),
-    sourceIP: generateRandomIP(),
-    target: 'Web Server',
-    type: THREAT_TYPES[Math.floor(Math.random() * THREAT_TYPES.length)],
-    severity: SEVERITIES[severityIndex],
-  };
-};
+🔑 Executive Summary: The Crisis Edge
 
-// --- Component Definitions ---
+I am a highly disciplined Security Practitioner with 3+ years of equivalent Security Operations experience in threat hunting and vulnerability management.
 
-// Card Component for consistent styling
-const DashboardCard = ({ title, children, icon: Icon }) => (
-  <div className="bg-gray-800 p-4 lg:p-6 rounded-xl shadow-lg border border-gray-700/50 transition duration-300 hover:border-blue-500/50 flex flex-col">
-    <div className="flex items-center justify-between mb-3">
-      <h2 className="text-sm font-semibold text-gray-300 uppercase tracking-wider">{title}</h2>
-      {Icon && <Icon className="w-5 h-5 text-blue-400" />}
-    </div>
-    {children}
-  </div>
-);
+My defining strength is the integration of proven technical hunting skills (OWASP Top 10, API Misconfiguration) with a decade of high-stakes Crisis Management (Médecins Sans Frontières / MSF). This background guarantees the precision, integrity, and calm execution crucial for Incident Response Runbooks and digital forensics under pressure.
 
-// Metric Display Component
-const MetricDisplay = ({ label, value, unit, icon: Icon, colorClass }) => (
-  <div className="flex items-center p-3 bg-gray-700/50 rounded-lg">
-    <div className={`p-2 rounded-full ${colorClass} bg-opacity-20`}>
-      <Icon className={`w-6 h-6 ${colorClass}`} />
-    </div>
-    <div className="ml-4">
-      <p className="text-xl font-bold text-white leading-none">{value}</p>
-      <p className="text-xs text-gray-400">{label} {unit && <span className="font-medium ml-0.5">{unit}</span>}</p>
-    </div>
-  </div>
-);
+🎯 Quantified Technical Impact: Threat Hunting Trophies
 
-// Threat Severity Badge
-const SeverityBadge = ({ severity }) => {
-  let color = '';
-  switch (severity) {
-    case 'Critical': color = 'bg-red-600 text-white'; break;
-    case 'High': color = 'bg-red-500 text-white'; break;
-    case 'Medium': color = 'bg-yellow-500 text-gray-900'; break;
-    case 'Low': color = 'bg-green-500 text-gray-900'; break;
-    default: color = 'bg-gray-500 text-white';
-  }
-  return (
-    <span className={`px-2 py-0.5 text-xs font-semibold rounded-full ${color}`}>
-      {severity}
-    </span>
-  );
-};
+This section demonstrates hands-on, verifiable expertise in identifying, triaging, and documenting critical security flaws—core functions aligned with SOC Tier 2 Analysis and Vulnerability Triage.
 
-// Main Application Component
-const App = () => {
-  const [metrics, setMetrics] = useState(initialMetrics);
-  const [threats, setThreats] = useState([]);
-  const [trafficData, setTrafficData] = useState(Array(10).fill(0).map(() => Math.floor(Math.random() * 100)));
+Status
 
-  // Simulate real-time data updates
-  useEffect(() => {
-    const threatInterval = setInterval(() => {
-      // 1. Generate new threat (with 40% chance)
-      if (Math.random() < 0.4) {
-        const newThreat = generateNewThreat();
-        setThreats(prev => [newThreat, ...prev].slice(0, 10)); // Keep max 10 recent threats
-        if (newThreat.severity === 'Critical') {
-          setMetrics(prev => ({ ...prev, criticalAlerts: prev.criticalAlerts + 1 }));
-        }
-        if (newThreat.severity !== 'Low') {
-            setMetrics(prev => ({ ...prev, attacksBlocked: prev.attacksBlocked + 1 }));
-        }
-      }
+Target / Program
 
-      // 2. Update traffic data
-      setTrafficData(prev => {
-        const newData = [...prev.slice(1)];
-        const lastValue = newData[newData.length - 1] || 50;
-        // Simulate fluctuating traffic (min 10, max 90)
-        const nextValue = Math.min(90, Math.max(10, lastValue + Math.floor(Math.random() * 21) - 10));
-        newData.push(nextValue);
-        return newData;
-      });
+Severity Range
 
-      // 3. Update total traffic (GB)
-      setMetrics(prev => ({
-        ...prev,
-        totalTraffic: parseFloat((prev.totalTraffic + 0.001 * Math.random()).toFixed(2))
-      }));
+Vulnerability Class Focus
 
-    }, 1500); // Update every 1.5 seconds
+Core Skill Demonstrated
 
-    return () => clearInterval(threatInterval);
-  }, []);
+✅
 
-  // Calculate Threat Progress Bar width
-  const threatWidth = `${(metrics.threatLevel / 5) * 100}%`;
-  let threatColor = 'bg-green-500';
-  if (metrics.threatLevel > 3) threatColor = 'bg-yellow-500';
-  if (metrics.threatLevel > 4) threatColor = 'bg-red-600';
+Google VRP
 
+High
 
-  // Traffic Chart Simulation (using only CSS/divs for single-file compliance)
-  const TrafficChart = useCallback(() => (
-    <div className="flex h-20 w-full items-end space-x-1">
-      {trafficData.map((height, index) => (
-        <div
-          key={index}
-          className="w-1/10 bg-blue-500 rounded-t-sm transition-all duration-1000 ease-out"
-          style={{ height: `${height}%` }}
-        ></div>
-      ))}
-    </div>
-  ), [trafficData]);
+Business Logic/XSS
 
+Proactive Threat Hunting
 
-  return (
-    <div className="min-h-screen bg-gray-900 text-gray-100 p-4 sm:p-6 lg:p-8 font-sans">
-      <header className="mb-6 lg:mb-8 flex items-center justify-between border-b border-gray-700 pb-4">
-        <h1 className="text-3xl sm:text-4xl font-extrabold text-blue-400 flex items-center">
-          <Shield className="w-8 h-8 mr-3 text-blue-500" />
-          CyberOps Dashboard
-        </h1>
-        <div className="hidden sm:block text-sm text-gray-400">
-          Last Updated: <span className="font-mono">{new Date().toLocaleTimeString()}</span>
-        </div>
-      </header>
+✅
 
-      {/* --- Main Metrics Grid (Responsive: Stacks on mobile, 3 columns on large screens) --- */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6 mb-8">
-        <MetricDisplay
-          label="Attacks Blocked"
-          value={metrics.attacksBlocked.toLocaleString()}
-          icon={Shield}
-          colorClass="text-green-400"
-        />
-        <MetricDisplay
-          label="Critical Alerts"
-          value={metrics.criticalAlerts}
-          icon={AlertTriangle}
-          colorClass="text-red-500"
-        />
-        <MetricDisplay
-          label="Total Traffic"
-          value={metrics.totalTraffic}
-          unit="GB"
-          icon={Activity}
-          colorClass="text-blue-400"
-        />
-        <MetricDisplay
-          label="Uptime"
-          value="99.99"
-          unit="%"
-          icon={Server}
-          colorClass="text-purple-400"
-        />
-      </div>
+BMW Group
 
-      {/* --- Main Dashboard Body Grid (Responsive: 1 column on mobile, 2 columns on tablet, complex on desktop) --- */}
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 lg:gap-6">
+Exceptional
 
-        {/* --- Column 1: Threat Status & Traffic (Takes 2/3 width on large screens) --- */}
-        <div className="lg:col-span-2 space-y-4 lg:space-y-6">
+Access Control / Data Leak
 
-          {/* Threat Level Indicator */}
-          <DashboardCard title="Overall Threat Status" icon={Zap}>
-            <p className="text-2xl font-light mb-4">
-                Current State: <span className="font-bold text-red-400">ELEVATED</span>
-            </p>
-            <div className="w-full h-3 bg-gray-700 rounded-full overflow-hidden">
-              <div
-                className={`h-full ${threatColor} transition-all duration-1000 ease-out`}
-                style={{ width: threatWidth }}
-              ></div>
-            </div>
-            <div className="flex justify-between text-sm mt-1 text-gray-400">
-                <span>Low</span>
-                <span>Critical</span>
-            </div>
-          </DashboardCard>
+Deep Root Cause Analysis (RCA)
 
-          {/* Real-time Traffic/Anomaly Chart */}
-          <DashboardCard title="Network Traffic Anomaly Monitor (MB/s)">
-            <TrafficChart />
-            <div className="flex justify-between text-xs text-gray-400 mt-2">
-                <span>15s Ago</span>
-                <span>Now</span>
-            </div>
-            <p className="text-sm text-gray-500 mt-3">Spikes indicate potential data exfiltration or DDoS attempts.</p>
-          </DashboardCard>
-        </div>
+✅
+
+Monzo
+
+High
+
+API Misconfiguration
+
+External Attack Surface Mapping
+
+🛠️
+
+General Focus
+
+High-to-Critical
+
+IDOR, Reflected XSS, API Abuse
+
+Systematic OWASP Top 10 Expertise
+
+📊 Impact Methodology: All findings included detailed triage-ready reports using CVSS scoring and step-by-step Proof of Concept (PoC) documentation.
+
+🔬 Verified Proof of Concept (PoC) Projects
+
+Demonstrations of technical knowledge applied to real-world risk scenarios.
+
+🌐 Cloud & API Misconfiguration Exploits
+
+Synology Maps API Key Exposure
+
+Risk: Key retrieved via passive scanning; confirmed validity by initiating authenticated API calls, risking quota exhaustion and service disruption.
+Live PoC Demo | Report Documentation
+
+Wing.com Geocoding API Key Leak
+
+Risk: Exposed API key in client-side script confirmed unauthorized access to Cloud IaaS billing functions, demonstrating critical financial risk.
+Live PoC Demo | Report Documentation
+
+🛠️ Core Technical Arsenal
+
+A matrix of skills emphasizing both offensive capability and defensive operations.
+
+💻 Tools & Utilities
+
+Category
+
+Keywords
+
+Icons
+
+Penetration Testing
+
+Burp Suite Pro, Nmap, Metasploit, Wireshark
+
+🕷️ 🕸️
+
+Security Operations
+
+SIEM (Splunk/ELK), Threat Intelligence, MITRE ATT&CK
+
+🛡️ 📊
+
+Scripting & Data
+
+Python, Bash, SQL, Linux
+
+🐍 🐧
+
+☁️ Domain Expertise
+
+Web: OWASP Top 10, API Security (REST/GraphQL), Web/Server Misconfiguration.
+
+Cloud: Understanding of Cloud IaaS Security (GCP, AWS) and common services misconfigurations.
+
+Forensics: Evidence preservation, Chain of Custody, Data Integrity.
+
+⚡ The Resilience Core: Crisis Management Advantage
+
+My experience in high-stakes humanitarian/medical environments directly transfers the non-technical capabilities essential for effective Security Operations.
+
+Crisis Skillset (MSF)
+
+➡️
+
+Cyber Security Competency
+
+High-Pressure Execution
 
 
-        {/* --- Column 2: Recent Threat Log (Takes 1/3 width on large screens) --- */}
-        <div className="lg:col-span-1">
-          <DashboardCard title="Recent Threat Log" icon={Clock}>
-            <div className="h-96 overflow-y-auto pr-2">
-              {threats.length === 0 ? (
-                <p className="text-center text-gray-500 mt-20">No recent threats detected. Checking...</p>
-              ) : (
-                <ul className="space-y-3">
-                  {threats.map((threat) => (
-                    <li key={threat.id} className="p-3 bg-gray-700 rounded-lg hover:bg-gray-700/80 transition duration-150">
-                      <div className="flex justify-between items-start">
-                        <SeverityBadge severity={threat.severity} />
-                        <span className="text-xs text-gray-500 font-mono">{threat.timestamp}</span>
-                      </div>
-                      <p className="text-sm font-medium mt-1 text-white">{threat.type}</p>
-                      <p className="text-xs text-gray-400">
-                        <span className="font-mono">{threat.sourceIP}</span> &rarr; {threat.target}
-                      </p>
-                    </li>
-                  ))}
-                </ul>
-              )}
-            </div>
-          </DashboardCard>
-        </div>
-      </div>
 
-      <footer className="mt-8 pt-4 border-t border-gray-700 text-center text-xs text-gray-600">
-        &copy; {new Date().getFullYear()} CyberOps Simulation. Data is mocked and auto-refreshing every 1.5s.
-      </footer>
-    </div>
-  );
-};
+IR Protocols: Rapid, calm, and disciplined execution of IR Runbooks during active, critical security incidents.
 
-export default App;
+Data Confidentiality
 
+
+
+Forensics Integrity: Intrinsic understanding of chain of custody required for sensitive patient records (PHI).
+
+Meticulous Documentation
+
+
+
+GRC & Reporting: Flawless evidence documentation, clear Root Cause Analysis (RCA), and audit-ready reports.
+
+Security Communication
+
+
+
+Policy Translation: Ability to translate complex protocols into actionable communication for non-technical leadership.
+
+📜 Certifications & Verifications
+
+Certification
+
+Focus Areas
+
+Verification
+
+Google Cybersecurity Professional Certificate
+
+Python, Linux/SQL, Detection & Response, SIEM
+
+Verify Credential
+
+Advent of Cyber 2024 (TryHackMe)
+
+Forensics, Web Exploitation, Defensive Strategies
+
+View Certificate (PDF)
+
+Mastercard Cybersecurity Job Simulation
+
+Phishing Defense, Security Awareness
+
+View Certificate (PDF)
