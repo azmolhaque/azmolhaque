@@ -1,203 +1,89 @@
-<div align="center">
-<!-- Title & Professional Identity -->
-<h1 style="border-bottom: 2px solid #58a6ff; padding-bottom: 10px;">
-🛡️ Md Azmol Haque Rony | Threat Hunter & Resilience Specialist
-</h1>
-<h3>Cyber Security Analyst | Incident Response | Vulnerability Management</h3>
-
-<!-- Badges & Links (Dynamic/Static) -->
-
-<p>
-<a href="https://www.linkedin.com/in/md-azmol-haque-rony">
-<img src="https://www.google.com/search?q=https://img.shields.io/badge/LinkedIn-Connect-0A66C2%3Fstyle%3Dfor-the-badge%26logo%3Dlinkedin%26logoColor%3Dwhite" alt="LinkedIn Profile"/>
-</a>
-<a href="mailto:azmolhaque95@gmail.com">
-<img src="https://www.google.com/search?q=https://img.shields.io/badge/Email-Contact-D14836%3Fstyle%3Dfor-the-badge%26logo%3Dgmail%26logoColor%3Dwhite" alt="Email Address"/>
-</a>
-<a href="https://azmolhaque.github.io/azmolhaque/azmolhaque.html" target="_blank">
-<img src="https://www.google.com/search?q=https://img.shields.io/badge/Portfolio-Live_POCs-FF6F00%3Fstyle%3Dfor-the-badge%26logo%3Dnetlify%26logoColor%3Dwhite" alt="Portfolio Link"/>
-</a>
+<h1 align="center">Md Azmol Haque Rony</h1>
+<p align="center">
+  <strong>Cybersecurity Expert | Threat Hunter | Vulnerability Management Specialist | SOC Analyst</strong><br>
+  <a href="mailto:azmolhaque95@gmail.com">📧 Email</a> • 
+  <a href="https://www.linkedin.com/in/md-azmol-haque-rony">🔗 LinkedIn</a> • 
+  <a href="https://azmolhaque.github.io/azmolhaque/portfolio.html">🌐 Portfolio</a>
 </p>
 
-<!-- GitHub Stats (azmolhaque) -->
+---
 
-<p>
-<img src="https://www.google.com/search?q=https://github-readme-stats.vercel.app/api%3Fusername%3Dazmolhaque%26show_icons%3Dtrue%26theme%3Ddark%26hide_border%3Dtrue%26count_private%3Dtrue" alt="GitHub Stats" />
-</p>
-</div>
+## 👨‍💻 About Me — Cybersecurity Analyst | Bug Bounty Hunter | SOC Tier 2 Ready
 
-🔑 Executive Summary: The Crisis Edge
+I’m Md Azmol Haque Rony, a cybersecurity professional with 3+ years of hands-on experience in threat hunting, vulnerability management, and incident response. My journey spans global bug bounty programs and high-pressure environments like Médecins Sans Frontières (MSF), where I developed a crisis-ready mindset and operational resilience.
 
-I am a highly disciplined Security Practitioner with 3+ years of equivalent Security Operations experience in threat hunting and vulnerability management.
+I specialize in:
 
-My defining strength is the integration of proven technical hunting skills (OWASP Top 10, API Misconfiguration) with a decade of high-stakes Crisis Management (Médecins Sans Frontières / MSF). This background guarantees the precision, integrity, and calm execution crucial for Incident Response Runbooks and digital forensics under pressure.
+- Threat Detection & Response (SIEM, MITRE ATT&CK, Splunk, ELK)
+- Vulnerability Assessment & Penetration Testing (Burp Suite, Nmap, Metasploit)
+- API Security, OWASP Top 10, Business Logic Flaws
+- Cloud Security (GCP, AWS), IaaS Misconfigurations
+- Root Cause Analysis (RCA), CVSS Scoring, and Triage Reporting
+- GRC Communication & Security Awareness Training
 
-🎯 Quantified Technical Impact: Threat Hunting Trophies
+---
 
-This section demonstrates hands-on, verifiable expertise in identifying, triaging, and documenting critical security flaws—core functions aligned with SOC Tier 2 Analysis and Vulnerability Triage.
+## 📈 Key Achievements & Impact Metrics
 
-Status
+- 🛡️ Reported 5+ high/critical vulnerabilities to Google VRP, BMW, Monzo, Flipkart  
+- 🧪 Developed triage-ready PoCs with reproducible abuse scenarios and financial impact modeling  
+- 📊 Delivered RCA-backed reports aligned with SOC Tier 2 workflows and incident response playbooks  
+- 🧠 Specialized in API misconfigurations, IDOR, reflected XSS, and logic flaws  
 
-Target / Program
+---
 
-Severity Range
+## 🧪 Verified Proof-of-Concept (PoC) Projects
 
-Vulnerability Class Focus
+| Project | Description | Link |
+|--------|-------------|------|
+| **Synology Maps API Key Exposure** | Discovered exposed API key via passive recon; demonstrated quota exhaustion risk | [🔗 View PoC](https://azmolhaque.github.io/synology_poc/) |
+| **Wing.com Geocoding API Key Leak** | Identified client-side key leak; simulated unauthorized billing access on cloud infrastructure | [🔗 View PoC](https://azmolhaque.github.io/wing-com-unrestricted-maps-api-key-poc/) |
 
-Core Skill Demonstrated
+---
 
-✅
+## 🧰 Technical Skills & Tools
 
-Google VRP
+- **Languages & Scripting**: Python, Bash, SQL  
+- **Security Tools**: Kali Linux, Burp Suite Pro, Nmap, Metasploit, Wireshark, Nuclei  
+- **Platforms**: Linux, GCP, AWS  
+- **Security Operations**: SIEM (Splunk, ELK), IDS/IPS, WAF, MITRE ATT&CK  
+- **Frameworks**: NIST CSF, CIA Triad, CVSS  
+- **Other**: Markdown, HTML, CSS, Git, GitHub Pages
 
-High
+---
 
-Business Logic/XSS
+## 🧩 Operational Resilience & Incident Response
 
-Proactive Threat Hunting
+- 🧠 **Crisis-Ready Execution**: Managed emergency response in ER/ICU and humanitarian zones (MSF, CMH Dhaka)  
+- 🔍 **Forensics Mindset**: Maintained chain of custody and PHI integrity under pressure  
+- 📣 **GRC Communication**: Translated security policies into actionable guidance for global teams  
 
-✅
+---
 
-BMW Group
+## 📜 Cybersecurity Certifications & Credentials
 
-Exceptional
+### 🏅 Google Cybersecurity Professional Certificate  
+Issued by Google via Coursera | Completed Jan 30, 2025  
+[🔗 View Credential](https://www.coursera.org/account/accomplishments/specialization/9EMHGS2G0UAM)
 
-Access Control / Data Leak
+### 🏅 Mastercard Cybersecurity Job Simulation  
+Issued by Forage | Completed May 2024  
+[🔗 View Certificate (PDF)](https://forage-uploads-prod.s3.amazonaws.com/completion-certificates/mastercard/vcKAB5yYAgvemepGQ_Mastercard_JMsHG793ksfGqPq9v_1715191717515_completion_certificate.pdf)
 
-Deep Root Cause Analysis (RCA)
+### 🏅 TryHackMe Advent of Cyber 2024  
+Issued by TryHackMe | Completed Dec 2024  
+[🔗 View Certificate (PDF)](https://tryhackme-certificates.s3-eu-west-1.amazonaws.com/THM-BB6YTOI6RT.pdf)
 
-✅
+---
 
-Monzo
+## 📄 Resume & Contact
 
-High
+I’m open to cybersecurity roles in SOC, threat detection, cloud security, or GRC. Let’s connect:
 
-API Misconfiguration
+- 📧 Email: azmolhaque95@gmail.com  
+- 📱 Phone: +8801717534550  
+- 📄 [Download Resume (PDF)](assets/Cybersecurity%20Resume.pdf)
 
-External Attack Surface Mapping
+---
 
-🛠️
-
-General Focus
-
-High-to-Critical
-
-IDOR, Reflected XSS, API Abuse
-
-Systematic OWASP Top 10 Expertise
-
-📊 Impact Methodology: All findings included detailed triage-ready reports using CVSS scoring and step-by-step Proof of Concept (PoC) documentation.
-
-🔬 Verified Proof of Concept (PoC) Projects
-
-Demonstrations of technical knowledge applied to real-world risk scenarios.
-
-🌐 Cloud & API Misconfiguration Exploits
-
-Synology Maps API Key Exposure
-
-Risk: Key retrieved via passive scanning; confirmed validity by initiating authenticated API calls, risking quota exhaustion and service disruption.
-Live PoC Demo | Report Documentation
-
-Wing.com Geocoding API Key Leak
-
-Risk: Exposed API key in client-side script confirmed unauthorized access to Cloud IaaS billing functions, demonstrating critical financial risk.
-Live PoC Demo | Report Documentation
-
-🛠️ Core Technical Arsenal
-
-A matrix of skills emphasizing both offensive capability and defensive operations.
-
-💻 Tools & Utilities
-
-Category
-
-Keywords
-
-Icons
-
-Penetration Testing
-
-Burp Suite Pro, Nmap, Metasploit, Wireshark
-
-🕷️ 🕸️
-
-Security Operations
-
-SIEM (Splunk/ELK), Threat Intelligence, MITRE ATT&CK
-
-🛡️ 📊
-
-Scripting & Data
-
-Python, Bash, SQL, Linux
-
-🐍 🐧
-
-☁️ Domain Expertise
-
-Web: OWASP Top 10, API Security (REST/GraphQL), Web/Server Misconfiguration.
-
-Cloud: Understanding of Cloud IaaS Security (GCP, AWS) and common services misconfigurations.
-
-Forensics: Evidence preservation, Chain of Custody, Data Integrity.
-
-⚡ The Resilience Core: Crisis Management Advantage
-
-My experience in high-stakes humanitarian/medical environments directly transfers the non-technical capabilities essential for effective Security Operations.
-
-Crisis Skillset (MSF)
-
-➡️
-
-Cyber Security Competency
-
-High-Pressure Execution
-
-
-
-IR Protocols: Rapid, calm, and disciplined execution of IR Runbooks during active, critical security incidents.
-
-Data Confidentiality
-
-
-
-Forensics Integrity: Intrinsic understanding of chain of custody required for sensitive patient records (PHI).
-
-Meticulous Documentation
-
-
-
-GRC & Reporting: Flawless evidence documentation, clear Root Cause Analysis (RCA), and audit-ready reports.
-
-Security Communication
-
-
-
-Policy Translation: Ability to translate complex protocols into actionable communication for non-technical leadership.
-
-📜 Certifications & Verifications
-
-Certification
-
-Focus Areas
-
-Verification
-
-Google Cybersecurity Professional Certificate
-
-Python, Linux/SQL, Detection & Response, SIEM
-
-Verify Credential
-
-Advent of Cyber 2024 (TryHackMe)
-
-Forensics, Web Exploitation, Defensive Strategies
-
-View Certificate (PDF)
-
-Mastercard Cybersecurity Job Simulation
-
-Phishing Defense, Security Awareness
-
-View Certificate (PDF)
+<p align="center"><em>© 2025 Md Azmol Haque Rony — Built for impact, triage, and trust.</em></p>
