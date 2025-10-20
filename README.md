@@ -155,17 +155,17 @@
                 <!-- PoC Projects Section -->
                 <section id="projects" class="mb-16">
                     <h2 class="text-2xl font-bold text-white mb-6 border-l-4 border-[#58a6ff] pl-4">Verified Proof of Concept (PoC) Projects</h2>
-                    <p class="mb-8 text-gray-400">These projects are live demonstrations of my ability to identify, quantify, and report real-world risk, focusing on API Misconfiguration and financial impact.</p>
+                    <p class="mb-8 text-gray-400">These projects are live demonstrations of my ability to identify, quantify, and report real-world risk, a critical skill for any security analyst. The link below points to my public portfolio where these can be viewed.</p>
                      <div class="space-y-8">
                         <div class="card p-6 rounded-lg">
                             <h3 class="font-bold text-xl text-white mb-2">Synology Maps API Key Exposure</h3>
                             <p class="text-gray-400 mb-4"><strong>Risk Type:</strong> Financial/Data Leakage (Quota Exhaustion)</p>
-                            <a href="https://azmolhaque.github.io/synology_poc/" target="_blank" class="font-semibold text-[#58a6ff] hover:underline">View PoC Demo <i data-lucide="arrow-right" class="inline w-4 h-4"></i></a>
+                            <a href="https://azmolhaque.github.io/azmolhaque/" target="_blank" class="font-semibold text-[#58a6ff] hover:underline">View PoC Demo <i data-lucide="arrow-right" class="inline w-4 h-4"></i></a>
                         </div>
                         <div class="card p-6 rounded-lg">
                             <h3 class="font-bold text-xl text-white mb-2">Wing.com Geocoding API Key Leak</h3>
                             <p class="text-gray-400 mb-4"><strong>Risk Type:</strong> Unauthorized Access (Cloud Billing Impact)</p>
-                            <a href="https://azmolhaque.github.io/wing-com-unrestricted-maps-api-key-poc/" target="_blank" class="font-semibold text-[#58a6ff] hover:underline">View PoC Demo <i data-lucide="arrow-right" class="inline w-4 h-4"></i></a>
+                            <a href="https://azmolhaque.github.io/azmolhaque/" target="_blank" class="font-semibold text-[#58a6ff] hover:underline">View PoC Demo <i data-lucide="arrow-right" class="inline w-4 h-4"></i></a>
                         </div>
                     </div>
                 </section>
@@ -202,7 +202,7 @@
                         <div class="card p-6 rounded-lg">
                             <h3 class="font-bold text-lg text-white mb-2">Google Cybersecurity Professional Certificate</h3>
                             <p class="text-sm text-gray-400 mb-4">Python, Linux/SQL, Detection & Response, SIEM</p>
-                            <a href="https://coursera.org/verify/professional-cert/9EMHGS2G0UAM" target="_blank" class="font-semibold text-[#58a6ff] hover:underline text-sm">Verify Credential</a>
+                            <a href="https://www.coursera.org/account/accomplishments/specialization/certificate/9EMHGS2G0UAM" target="_blank" class="font-semibold text-[#58a6ff] hover:underline text-sm">Verify Credential</a>
                         </div>
                          <div class="card p-6 rounded-lg">
                             <h3 class="font-bold text-lg text-white mb-2">Advent of Cyber 2024 (THM)</h3>
@@ -376,7 +376,7 @@
                         },
                         scales: {
                             r: {
-                                angleLines: { color: '#3036d' },
+                                angleLines: { color: '#30363d' },
                                 grid: { color: '#30363d' },
                                 pointLabels: { color: '#c9d1d9', font: {size: 10}},
                                 ticks: {
