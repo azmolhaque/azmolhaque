@@ -1,6 +1,6 @@
-<h1 align="center">Md Azmol Haque Rony</h1>
+<h1 align="center">Md. Azmol Haque Rony</h1>
 <p align="center">
-  <strong>Cybersecurity Expert | Threat Hunter | Vulnerability Management Specialist | SOC Analyst</strong><br>
+  <strong>ICT & Security Specialist | Humanitarian Digital Operations | Cybersecurity Analyst</strong><br>
   <a href="mailto:azmolhaque95@gmail.com">📧 Email</a> • 
   <a href="https://www.linkedin.com/in/md-azmol-haque-rony">🔗 LinkedIn</a> • 
   <a href="https://azmolhaque.github.io/azmolhaque/portfolio.html">🌐 Portfolio</a>
@@ -8,27 +8,26 @@
 
 ---
 
-## 👨‍💻 About Me — Cybersecurity Analyst | Bug Bounty Hunter | SOC Tier 2 Ready
+## 👨‍💻 About Me — Bridging Frontline Operations with Secure IT Infrastructure
 
-I’m Md Azmol Haque Rony, a cybersecurity professional with 3+ years of hands-on experience in threat hunting, vulnerability management, and incident response. My journey spans global bug bounty programs and high-pressure environments like Médecins Sans Frontières (MSF), where I developed a crisis-ready mindset and operational resilience.
+I am a cybersecurity and IT professional with a unique operational background. Having spent nearly two years managing high-stakes environments in the refugee response with Médecins Sans Frontières (MSF), I have transitioned my crisis-triage mindset into the digital realm. I specialize in threat hunting, IT service management, system troubleshooting, and securing critical organizational infrastructure. 
 
-I specialize in:
+My goal is to leverage technology to drive humanitarian impact and enterprise security, ensuring systems are reliable, data is secure, and end-users are fully supported.
 
-- Threat Detection & Response (SIEM, MITRE ATT&CK, Splunk, ELK)
-- Vulnerability Assessment & Penetration Testing (Burp Suite, Nmap, Metasploit)
-- API Security, OWASP Top 10, Business Logic Flaws
-- Cloud Security (GCP, AWS), IaaS Misconfigurations
-- Root Cause Analysis (RCA), CVSS Scoring, and Triage Reporting
-- GRC Communication & Security Awareness Training
+### 🎯 Core Focus Areas:
+- **Threat Detection & Incident Response:** SIEM (Splunk, ELK), MITRE ATT&CK, Root Cause Analysis (RCA).
+- **Vulnerability Management & Pen-Testing:** API Security, OWASP Top 10, Cloud Misconfigurations (GCP, AWS).
+- **IT Support & Data Extraction:** Lifecycle management of IT incidents, SQL for database extraction, and Python for automation.
+- **GRC & User Orientation:** Translating security policies into actionable guidance and facilitating security awareness training.
 
 ---
 
 ## 📈 Key Achievements & Impact Metrics
 
-- 🛡️ Reported 5+ high/critical vulnerabilities to Google VRP, BMW, Monzo, Flipkart  
-- 🧪 Developed triage-ready PoCs with reproducible abuse scenarios and financial impact modeling  
-- 📊 Delivered RCA-backed reports aligned with SOC Tier 2 workflows and incident response playbooks  
-- 🧠 Specialized in API misconfigurations, IDOR, reflected XSS, and logic flaws  
+- 🛡️ **Vulnerability Disclosure:** Reported 5+ high/critical vulnerabilities to Google VRP, BMW, Monzo, and Flipkart.
+- 🧪 **Risk Modeling:** Developed triage-ready PoCs with reproducible abuse scenarios and financial impact modeling.
+- 📊 **Security Operations:** Delivered RCA-backed reports aligned with SOC Tier 2 workflows and incident response playbooks.
+- ⚙️ **Data & Infrastructure:** Specialized in API misconfigurations, IDOR, reflected XSS, and maintaining secure data lifecycles.
 
 ---
 
@@ -43,47 +42,47 @@ I specialize in:
 
 ## 🧰 Technical Skills & Tools
 
-- **Languages & Scripting**: Python, Bash, SQL  
-- **Security Tools**: Kali Linux, Burp Suite Pro, Nmap, Metasploit, Wireshark, Nuclei  
-- **Platforms**: Linux, GCP, AWS  
-- **Security Operations**: SIEM (Splunk, ELK), IDS/IPS, WAF, MITRE ATT&CK  
-- **Frameworks**: NIST CSF, CIA Triad, CVSS  
-- **Other**: Markdown, HTML, CSS, Git, GitHub Pages
+- **Languages & Scripting:** Python, Bash, SQL  
+- **Security Tools:** Kali Linux, Burp Suite Pro, Nmap, Metasploit, Wireshark, Nuclei  
+- **Platforms:** Linux, GCP, AWS, Windows Server
+- **Security Operations:** SIEM (Splunk, ELK), IDS/IPS, WAF, MITRE ATT&CK  
+- **Frameworks:** ITIL Principles, NIST CSF, CIA Triad, CVSS  
+- **Other:** Markdown, HTML, CSS, Git, GitHub Pages, Service Management Ticketing
 
 ---
 
-## 🧩 Operational Resilience & Incident Response
+## 🧩 Operational Resilience & Humanitarian Context
 
-- 🧠 **Crisis-Ready Execution**: Managed emergency response in ER/ICU and humanitarian zones (MSF, CMH Dhaka)  
-- 🔍 **Forensics Mindset**: Maintained chain of custody and PHI integrity under pressure  
-- 📣 **GRC Communication**: Translated security policies into actionable guidance for global teams  
+- 🧠 **Crisis-Ready Execution**: Managed emergency responses in ER/ICU and humanitarian zones (MSF, CMH Dhaka), applying medical triage principles to IT incident response. 
+- 🔍 **Forensics Mindset**: Maintained strict chain of custody, zero-error documentation, and PHI (Protected Health Information) integrity under pressure.
+- 📣 **Cross-Cultural Liaison**: Acted as a bilingual technical and operational facilitator, bridging communication gaps across global teams and end-users.
 
 ---
 
 ## 📜 Cybersecurity Certifications & Credentials
 
 ### 🏅 Google Cybersecurity Professional Certificate  
-Issued by Google via Coursera | Completed Jan 30, 2025  
+*Focus: Linux, SQL, Python, SIEM, and Network Security* Issued by Google via Coursera | Completed Jan 30, 2025  
 [🔗 View Credential](https://www.coursera.org/account/accomplishments/specialization/9EMHGS2G0UAM)
 
 ### 🏅 Mastercard Cybersecurity Job Simulation  
-Issued by Forage | Completed May 2024  
+*Focus: Phishing Email Simulation & User Security Awareness* Issued by Forage | Completed May 2024  
 [🔗 View Certificate (PDF)](https://forage-uploads-prod.s3.amazonaws.com/completion-certificates/mastercard/vcKAB5yYAgvemepGQ_Mastercard_JMsHG793ksfGqPq9v_1715191717515_completion_certificate.pdf)
 
 ### 🏅 TryHackMe Advent of Cyber 2024  
-Issued by TryHackMe | Completed Dec 2024  
+*Focus: Continuous IT Learning & Network Defense Challenges* Issued by TryHackMe | Completed Dec 28, 2024  
 [🔗 View Certificate (PDF)](https://tryhackme-certificates.s3-eu-west-1.amazonaws.com/THM-BB6YTOI6RT.pdf)
 
 ---
 
-## 📄 Resume & Contact
+## 📄 Contact & Resume
 
-I’m open to cybersecurity roles in SOC, threat detection, cloud security, or GRC. Let’s connect:
+I am currently open to roles in **ICT Support, SOC Analysis, Threat Detection, Cloud Security, and GRC**. Let’s connect:
 
-- 📧 Email: azmolhaque95@gmail.com  
-- 📱 Phone: +8801717534550  
-- 📄 [Download Resume (PDF)](assets/Cybersecurity%20Resume.pdf)
+- 📧 **Email:** azmolhaque95@gmail.com  
+- 📱 **Phone:** +8801717534550  
+- 📄 **[Download Resume (PDF)](assets/Cybersecurity%20Resume.pdf)**
 
 ---
 
-<p align="center"><em>© 2025 Md Azmol Haque Rony — Built for impact, triage, and trust.</em></p>
+<p align="center"><em>© 2026 Md. Azmol Haque Rony — Built for impact, triage, and trust.</em></p>
