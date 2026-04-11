@@ -81,7 +81,7 @@ I am currently open to roles in **ICT Support, SOC Analysis, Threat Detection, C
 
 - 📧 **Email:** azmolhaque95@gmail.com  
 - 📱 **Phone:** +8801717534550  
-- 📄 **[Download Resume (PDF)](assets/Cybersecurity%20Resume.pdf)**
+- 📄 **[Download Resume (PDF)](Azmol_Rony_Digital_Impact_Resume.pdf)**
 
 ---
 
