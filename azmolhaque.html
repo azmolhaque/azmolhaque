@@ -4,19 +4,19 @@
     <meta charset="UTF-8">
     <title>Md Azmol Haque Rony | Threat Hunter & Crisis Analyst</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Load Tailwind CSS -->
+    <meta name="description" content="Cybersecurity Analyst portfolio of MD Azmol Haque Rony. Specializing in Threat Hunting, Vulnerability Management, and Operational Resilience.">
+    <meta name="author" content="MD Azmol Haque Rony">
+    
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Use Lucide Icons for high-quality SVG icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
     
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700;800;900&display=swap" rel="stylesheet">
     
     <script>
         tailwind.config = {
           theme: {
             extend: {
               colors: {
-                // Technical Dark Theme Colors
                 'theme-dark': '#0f172a',    // Primary background
                 'theme-accent': '#34d399',  // Emerald-400 for vibrant highlights
                 'theme-card': '#1e293b',    // Slate-800 for card backgrounds
@@ -27,6 +27,9 @@
               fontFamily: {
                 sans: ['Inter', 'sans-serif'],
               },
+              animation: {
+                'fade-in-up': 'fadeInUp 0.8s ease-out forwards',
+              }
             }
           }
         }
@@ -34,7 +37,31 @@
     
     <style>
         html { scroll-behavior: smooth; }
-        body { background-color: #0f172a; }
+        body { 
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            min-height: 100vh;
+        }
+
+        /* Entry Animation */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-on-load {
+            opacity: 0;
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+        
+        .delay-100 { animation-delay: 0.1s; }
+        .delay-200 { animation-delay: 0.2s; }
+        .delay-300 { animation-delay: 0.3s; }
 
         /* Card Glow Effect for UX */
         .glow-card {
@@ -45,7 +72,7 @@
         }
         .glow-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 12px 35px rgba(52, 211, 153, 0.3); /* Stronger shadow */
+            box-shadow: 0 12px 35px rgba(52, 211, 153, 0.2); 
             border-color: #34d399;
         }
 
@@ -65,9 +92,10 @@
 
         /* Highlight box for contact details */
         .contact-box {
-            background-color: #1e293b;
-            border: 2px solid #34d399;
-            box-shadow: 0 0 15px rgba(52, 211, 153, 0.5);
+            background-color: rgba(30, 41, 59, 0.8);
+            backdrop-filter: blur(10px);
+            border: 1px solid #34d399;
+            box-shadow: 0 0 20px rgba(52, 211, 153, 0.15);
         }
         
         /* Skills grid refinement for mobile */
@@ -81,91 +109,95 @@
     </style>
 </head>
 
-<body class="text-theme-text font-sans antialiased">
+<body class="text-theme-text font-sans antialiased selection:bg-theme-accent selection:text-theme-dark">
 
-    <!-- Sticky Navigation Bar -->
-    <nav class="sticky top-0 z-50 bg-theme-dark/95 backdrop-blur-sm shadow-2xl">
+    <nav class="sticky top-0 z-50 bg-theme-dark/90 backdrop-blur-md shadow-2xl border-b border-theme-card">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-16">
-                <a href="#hero" class="text-2xl font-extrabold text-theme-accent hover:text-white transition duration-300 tracking-wider">
-                    <i data-lucide="monitor-dot" class="w-6 h-6 inline-block mr-1"></i> RONY | SECURITY PRACTITIONER
+                <a href="#hero" class="text-xl sm:text-2xl font-extrabold text-theme-accent hover:text-white transition duration-300 tracking-wider flex items-center">
+                    <i data-lucide="monitor-dot" class="w-6 h-6 mr-2"></i> RONY | SECURITY
                 </a>
-                <div class="flex space-x-4 text-sm font-medium">
-                    <a href="#impact" class="py-2 hover:text-theme-accent transition duration-200">Impact & Triage</a>
-                    <a href="#skills" class="py-2 hover:text-theme-accent transition duration-200">Tech Stack</a>
-                    <a href="#resilience" class="py-2 hover:text-theme-accent transition duration-200">Resilience</a>
-                    <a href="#certs" class="py-2 hover:text-theme-accent transition duration-200">Certs</a>
+                <div class="hidden sm:flex space-x-6 text-sm font-medium">
+                    <a href="#impact" class="py-2 text-theme-gray hover:text-theme-accent transition duration-200">Impact</a>
+                    <a href="#skills" class="py-2 text-theme-gray hover:text-theme-accent transition duration-200">Tech Stack</a>
+                    <a href="#resilience" class="py-2 text-theme-gray hover:text-theme-accent transition duration-200">Resilience</a>
+                    <a href="#certs" class="py-2 text-theme-gray hover:text-theme-accent transition duration-200">Certs</a>
                 </div>
             </div>
         </div>
     </nav>
 
-    <!-- Hero Section (High Impact Banner) -->
-    <section id="hero" class="pt-24 pb-20 text-center bg-theme-card/30 border-b border-theme-accent/50">
+    <section id="hero" class="pt-24 pb-20 text-center border-b border-theme-accent/20 animate-on-load">
         <div class="max-w-4xl mx-auto px-4">
             
-            <h1 class="text-5xl sm:text-7xl font-extrabold mb-4 leading-tight text-white">
+            <h1 class="text-4xl sm:text-6xl md:text-7xl font-extrabold mb-4 leading-tight text-white tracking-tight">
                 MD AZMOL HAQUE RONY
             </h1>
             
-            <p class="text-xl sm:text-3xl font-light mb-6 text-theme-accent">
-                Threat Hunting & Vulnerability Management | Operational Resilience Specialist
+            <p class="text-xl sm:text-2xl md:text-3xl font-light mb-6 text-theme-accent">
+                Threat Hunting & Vulnerability Management | Operational Resilience
             </p>
             
-            <p class="text-lg md:text-xl max-w-3xl mx-auto text-theme-gray mb-10">
-                A highly disciplined security practitioner with **3+ years of hands-on experience** in identifying, analyzing, and reporting critical vulnerabilities (Google VRP, BMW, Monzo). My technical proficiency is reinforced by a decade of high-stakes **crisis and confidentiality management** (MSF), delivering a unique blend of technical defense, precise incident response, and unwavering integrity.
+            <p class="text-base md:text-lg max-w-3xl mx-auto text-theme-gray mb-10 leading-relaxed">
+                A highly disciplined security practitioner with <strong class="text-white font-bold">3+ years of hands-on experience</strong> in identifying, analyzing, and reporting critical vulnerabilities (Google VRP, BMW, Monzo). My technical proficiency is reinforced by a decade of high-stakes <strong class="text-white font-bold">crisis and confidentiality management</strong> (MSF), delivering a unique blend of technical defense, precise incident response, and unwavering integrity.
             </p>
 
-            <!-- Contact Box & Primary CTA -->
             <div class="contact-box p-6 rounded-xl max-w-lg mx-auto mb-10">
-                <div class="flex flex-wrap justify-center gap-6 text-lg font-medium mb-6">
-                    <div class="flex items-center text-theme-text"><i data-lucide="mail" class="w-5 h-5 mr-1 text-theme-accent"></i> azmolhaque95@gmail.com</div>
-                    <div class="flex items-center text-theme-text"><i data-lucide="phone" class="w-5 h-5 mr-1 text-theme-accent"></i> +8801717534550</div>
+                <div class="flex flex-col sm:flex-row justify-center gap-4 sm:gap-6 text-base font-medium mb-6">
+                    <a href="mailto:azmolhaque95@gmail.com" class="flex items-center justify-center text-theme-text hover:text-theme-accent transition">
+                        <i data-lucide="mail" class="w-5 h-5 mr-2 text-theme-accent"></i> azmolhaque95@gmail.com
+                    </a>
+                    <a href="tel:+8801717534550" class="flex items-center justify-center text-theme-text hover:text-theme-accent transition">
+                        <i data-lucide="phone" class="w-5 h-5 mr-2 text-theme-accent"></i> +8801717534550
+                    </a>
                 </div>
-                <!-- Main Call to Action -->
-                <a href="#impact" class="inline-flex items-center text-lg font-bold py-3 px-8 rounded-full shadow-2xl bg-theme-accent text-theme-dark transition duration-300 hover:bg-white hover:scale-[1.05]">
-                    View Quantified Vulnerability Impact &rarr;
+                <a href="#impact" class="inline-flex items-center text-base sm:text-lg font-bold py-3 px-8 rounded-full shadow-lg bg-theme-accent text-theme-dark transition duration-300 hover:bg-white hover:-translate-y-1">
+                    View Quantified Impact &rarr;
                 </a>
             </div>
             
         </div>
     </section>
 
-    <!-- Impact Section (MOST IMPORTANT SECTION) -->
-    <section id="impact" class="py-20 px-4 md:px-8 max-w-6xl mx-auto">
-        <h2 class="section-header text-3xl font-bold text-center mb-12 text-white">
-            <i data-lucide="skull" class="inline-block w-7 h-7 mr-2 text-theme-danger"></i> Quantified Impact: Vulnerability Discovery & Triage
+    <section id="impact" class="py-20 px-4 md:px-8 max-w-6xl mx-auto animate-on-load delay-100">
+        <h2 class="section-header text-3xl font-bold text-center mb-12 text-white flex justify-center items-center">
+            <i data-lucide="skull" class="w-7 h-7 mr-3 text-theme-danger"></i> Quantified Impact: Discovery & Triage
         </h2>
 
         <div class="grid md:grid-cols-2 gap-8">
             
-            <!-- Bug Bounty Summary Card -->
-            <div class="glow-card bg-theme-card p-8 rounded-xl shadow-2xl border-l-4 border-theme-danger">
-                <i data-lucide="monitor-off" class="w-8 h-8 text-theme-danger mb-3"></i>
-                <h3 class="text-2xl font-bold mb-3 text-white">Security Practitioner Experience (2022-Present)</h3>
-                <ul class="list-disc ml-5 text-theme-text space-y-3 text-base">
-                    <li class="font-bold">Threat Hunting: Proactively identified and disclosed <span class="text-theme-danger">**5+ High-to-Exceptional Severity**</span> vulnerabilities to global firms (Google VRP, Flipkart, Monzo, BMW).</li>
-                    <li>**Incident Triage:** Conducted detailed **Root Cause Analysis (RCA)** and produced high-fidelity, triage-ready reports for vendor engineering teams, significantly accelerating patch deployment.</li>
-                    <li>**Scope Proficiency:** Proven hands-on experience in API Misconfiguration, Cross-Site Scripting (XSS), and complex Business Logic Flaws.</li>
+            <div class="glow-card bg-theme-card p-8 rounded-xl shadow-xl border-l-4 border-theme-danger">
+                <i data-lucide="monitor-off" class="w-8 h-8 text-theme-danger mb-4"></i>
+                <h3 class="text-2xl font-bold mb-4 text-white">Security Practitioner Experience</h3>
+                <ul class="list-none text-theme-gray space-y-4 text-base">
+                    <li class="flex items-start">
+                        <i data-lucide="chevron-right" class="w-5 h-5 mr-2 text-theme-danger shrink-0 mt-0.5"></i>
+                        <span><strong class="text-white">Threat Hunting:</strong> Proactively identified and disclosed <strong class="text-theme-danger font-bold">5+ High-to-Exceptional Severity</strong> vulnerabilities to global firms (Google VRP, Flipkart, Monzo, BMW).</span>
+                    </li>
+                    <li class="flex items-start">
+                        <i data-lucide="chevron-right" class="w-5 h-5 mr-2 text-theme-danger shrink-0 mt-0.5"></i>
+                        <span><strong class="text-white">Incident Triage:</strong> Conducted detailed <strong class="text-white font-bold">Root Cause Analysis (RCA)</strong> and produced high-fidelity, triage-ready reports for vendor engineering teams, significantly accelerating patch deployment.</span>
+                    </li>
+                    <li class="flex items-start">
+                        <i data-lucide="chevron-right" class="w-5 h-5 mr-2 text-theme-danger shrink-0 mt-0.5"></i>
+                        <span><strong class="text-white">Scope Proficiency:</strong> Proven hands-on experience in API Misconfiguration, Cross-Site Scripting (XSS), and complex Business Logic Flaws.</span>
+                    </li>
                 </ul>
             </div>
 
-            <!-- PoC Projects Group (Risk Quantification) -->
             <div class="space-y-6">
-                <!-- PoC 1 Card -->
-                <div class="glow-card bg-theme-card p-6 rounded-xl shadow-xl border-l-4 border-yellow-500">
+                <div class="glow-card bg-theme-card p-6 rounded-xl shadow-lg border-l-4 border-yellow-500">
                     <h4 class="text-xl font-semibold text-white mb-2">PoC: Synology Maps API Key Exposure</h4>
-                    <p class="text-theme-gray text-sm mb-3">**Risk Quantified:** Demonstrated unrestricted Places API abuse, proving potential for **financial quota exhaustion** and PII/metadata leakage. Identified a critical failure in client-side access control.</p>
-                    <a href="https://azmolhaque.github.io/synology_poc/" target="_blank" class="inline-flex items-center text-theme-accent hover:underline font-medium text-sm transition duration-300">
+                    <p class="text-theme-gray text-sm mb-4 leading-relaxed"><strong class="text-white">Risk Quantified:</strong> Demonstrated unrestricted Places API abuse, proving potential for <strong class="text-white font-bold">financial quota exhaustion</strong> and PII/metadata leakage. Identified a critical failure in client-side access control.</p>
+                    <a href="https://azmolhaque.github.io/synology_poc/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center text-theme-accent hover:text-white font-medium text-sm transition duration-300">
                         View Live PoC <i data-lucide="external-link" class="w-4 h-4 ml-1"></i>
                     </a>
                 </div>
 
-                <!-- PoC 2 Card -->
-                <div class="glow-card bg-theme-card p-6 rounded-xl shadow-xl border-l-4 border-blue-500">
+                <div class="glow-card bg-theme-card p-6 rounded-xl shadow-lg border-l-4 border-blue-500">
                     <h4 class="text-xl font-semibold text-white mb-2">PoC: Wing.com Geocoding API Key Leak</h4>
-                    <p class="text-theme-gray text-sm mb-3">**Risk Quantified:** Verified unauthorized usage of a Geocoding API key, illustrating a direct financial impact through unauthorized consumption of paid cloud services and data processing.</p>
-                    <a href="https://azmolhaque.github.io/wing-com-unrestricted-maps-api-key-poc/" target="_blank" class="inline-flex items-center text-theme-accent hover:underline font-medium text-sm transition duration-300">
+                    <p class="text-theme-gray text-sm mb-4 leading-relaxed"><strong class="text-white">Risk Quantified:</strong> Verified unauthorized usage of a Geocoding API key, illustrating a direct financial impact through unauthorized consumption of paid cloud services and data processing.</p>
+                    <a href="https://azmolhaque.github.io/wing-com-unrestricted-maps-api-key-poc/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center text-theme-accent hover:text-white font-medium text-sm transition duration-300">
                         View Live PoC <i data-lucide="external-link" class="w-4 h-4 ml-1"></i>
                     </a>
                 </div>
@@ -173,159 +205,148 @@
         </div>
     </section>
 
-    <!-- Skills & Tools Section -->
-    <section id="skills" class="py-16 px-4 md:px-8 max-w-6xl mx-auto bg-theme-card/50 rounded-lg shadow-inner">
-        <h2 class="section-header text-3xl font-bold text-center mb-10 text-white">
-            <i data-lucide="layers-3" class="inline-block w-7 h-7 mr-2 text-theme-accent"></i> Core Technical Stack & Fundamentals
+    <section id="skills" class="py-16 px-4 md:px-8 max-w-6xl mx-auto animate-on-load delay-200">
+        <h2 class="section-header text-3xl font-bold text-center mb-12 text-white flex justify-center items-center">
+            <i data-lucide="layers-3" class="w-7 h-7 mr-3 text-theme-accent"></i> Core Technical Stack & Fundamentals
         </h2>
 
-        <div class="grid grid-cols-1 md:grid-cols-4 gap-6 text-center">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 text-center">
             
-            <!-- Category 1: SOC & ANALYSIS -->
-            <div class="bg-theme-dark p-5 rounded-lg shadow-xl border border-theme-card">
-                <h3 class="text-xl font-semibold text-theme-accent mb-3">SOC & Analysis</h3>
-                <div class="flex flex-wrap justify-center gap-2">
-                    <span class="bg-gray-700 text-gray-200 text-sm px-3 py-1 rounded-full skill-tag">SIEM Tools (Conceptual)</span>
-                    <span class="bg-gray-700 text-gray-200 text-sm px-3 py-1 rounded-full skill-tag">Detection & Response (D&R)</span>
-                    <span class="bg-gray-700 text-gray-200 text-sm px-3 py-1 rounded-full skill-tag">Intrusion Detection (IDS)</span>
+            <div class="bg-theme-card p-6 rounded-xl shadow-lg border border-slate-700/50 hover:border-theme-accent/50 transition">
+                <h3 class="text-lg font-bold text-theme-accent mb-4 tracking-wide uppercase">SOC & Analysis</h3>
+                <div class="flex flex-col gap-2">
+                    <span class="bg-slate-800 text-slate-300 text-sm px-3 py-2 rounded-md skill-tag border border-slate-700">SIEM Tools (Conceptual)</span>
+                    <span class="bg-slate-800 text-slate-300 text-sm px-3 py-2 rounded-md skill-tag border border-slate-700">Detection & Response (D&R)</span>
+                    <span class="bg-slate-800 text-slate-300 text-sm px-3 py-2 rounded-md skill-tag border border-slate-700">Intrusion Detection (IDS)</span>
                 </div>
             </div>
 
-            <!-- Category 2: VULNERABILITY ASSESSMENT -->
-            <div class="bg-theme-dark p-5 rounded-lg shadow-xl border border-theme-card">
-                <h3 class="text-xl font-semibold text-theme-accent mb-3">Vulnerability Assessment</h3>
-                <div class="flex flex-wrap justify-center gap-2">
-                    <span class="bg-gray-700 text-gray-200 text-sm px-3 py-1 rounded-full skill-tag">Burp Suite (Traffic/Testing)</span>
-                    <span class="bg-gray-700 text-gray-200 text-sm px-3 py-1 rounded-full skill-tag">Nmap / Port Scanning</span>
-                    <span class="bg-gray-700 text-gray-200 text-sm px-3 py-1 rounded-full skill-tag">Wireshark (Analysis)</span>
-                    <span class="bg-gray-700 text-gray-200 text-sm px-3 py-1 rounded-full skill-tag">Cloud Security (GCP/AWS Theory)</span>
+            <div class="bg-theme-card p-6 rounded-xl shadow-lg border border-slate-700/50 hover:border-theme-accent/50 transition">
+                <h3 class="text-lg font-bold text-theme-accent mb-4 tracking-wide uppercase">Vuln Assessment</h3>
+                <div class="flex flex-col gap-2">
+                    <span class="bg-slate-800 text-slate-300 text-sm px-3 py-2 rounded-md skill-tag border border-slate-700">Burp Suite (Traffic/Testing)</span>
+                    <span class="bg-slate-800 text-slate-300 text-sm px-3 py-2 rounded-md skill-tag border border-slate-700">Nmap / Port Scanning</span>
+                    <span class="bg-slate-800 text-slate-300 text-sm px-3 py-2 rounded-md skill-tag border border-slate-700">Wireshark (Analysis)</span>
+                    <span class="bg-slate-800 text-slate-300 text-sm px-3 py-2 rounded-md skill-tag border border-slate-700">Cloud Security (GCP/AWS)</span>
                 </div>
             </div>
             
-            <!-- Category 3: AUTOMATION & OS -->
-            <div class="bg-theme-dark p-5 rounded-lg shadow-xl border border-theme-card">
-                <h3 class="text-xl font-semibold text-theme-accent mb-3">Automation & OS</h3>
-                <div class="flex flex-wrap justify-center gap-2">
-                    <span class="bg-gray-700 text-gray-200 text-sm px-3 py-1 rounded-full skill-tag">Python (Security Scripting)</span>
-                    <span class="bg-gray-700 text-gray-200 text-sm px-3 py-1 rounded-full skill-tag">SQL (Data Query & Logging)</span>
-                    <span class="bg-gray-700 text-gray-200 text-sm px-3 py-1 rounded-full skill-tag">Linux / Bash Scripting</span>
+            <div class="bg-theme-card p-6 rounded-xl shadow-lg border border-slate-700/50 hover:border-theme-accent/50 transition">
+                <h3 class="text-lg font-bold text-theme-accent mb-4 tracking-wide uppercase">Automation & OS</h3>
+                <div class="flex flex-col gap-2">
+                    <span class="bg-slate-800 text-slate-300 text-sm px-3 py-2 rounded-md skill-tag border border-slate-700">Python (Security Scripting)</span>
+                    <span class="bg-slate-800 text-slate-300 text-sm px-3 py-2 rounded-md skill-tag border border-slate-700">SQL (Data Query & Logging)</span>
+                    <span class="bg-slate-800 text-slate-300 text-sm px-3 py-2 rounded-md skill-tag border border-slate-700">Linux / Bash Scripting</span>
                 </div>
             </div>
 
-            <!-- Category 4: FRAMEWORKS & POLICY -->
-            <div class="bg-theme-dark p-5 rounded-lg shadow-xl border border-theme-card">
-                <h3 class="text-xl font-semibold text-theme-accent mb-3">Frameworks & Policy</h3>
-                <div class="flex flex-wrap justify-center gap-2">
-                    <span class="bg-gray-700 text-gray-200 text-sm px-3 py-1 rounded-full skill-tag">NIST CSF (Identify, Detect, Respond)</span>
-                    <span class="bg-gray-700 text-gray-200 text-sm px-3 py-1 rounded-full skill-tag">Security Awareness Training</span>
-                    <span class="bg-gray-700 text-gray-200 text-sm px-3 py-1 rounded-full skill-tag">Confidentiality & Integrity Principles</span>
+            <div class="bg-theme-card p-6 rounded-xl shadow-lg border border-slate-700/50 hover:border-theme-accent/50 transition">
+                <h3 class="text-lg font-bold text-theme-accent mb-4 tracking-wide uppercase">Frameworks & Policy</h3>
+                <div class="flex flex-col gap-2">
+                    <span class="bg-slate-800 text-slate-300 text-sm px-3 py-2 rounded-md skill-tag border border-slate-700">NIST CSF (Identify, Detect)</span>
+                    <span class="bg-slate-800 text-slate-300 text-sm px-3 py-2 rounded-md skill-tag border border-slate-700">Security Awareness Training</span>
+                    <span class="bg-slate-800 text-slate-300 text-sm px-3 py-2 rounded-md skill-tag border border-slate-700">CIA Triad Principles</span>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Unique Experience Section (MSF Advantage) -->
-    <section id="resilience" class="py-20 px-4 md:px-8 max-w-6xl mx-auto">
-        <h2 class="section-header text-3xl font-bold text-center mb-10 text-white">
-            <i data-lucide="shield" class="inline-block w-7 h-7 mr-2 text-theme-accent"></i> Operational Resilience: The Crisis Management Advantage
-        </h2>
-        
-        <p class="text-lg text-theme-gray mb-10 text-center max-w-4xl mx-auto">
-            My experience as a **Security Advisor and Humanitarian Professional (MSF)** provides highly valuable, non-technical capabilities that define operational resilience in a security context:
-        </p>
+    <section id="resilience" class="py-20 px-4 md:px-8 max-w-6xl mx-auto animate-on-load delay-300">
+        <div class="bg-theme-card/30 p-8 md:p-12 rounded-2xl border border-theme-accent/20 relative overflow-hidden">
+            <div class="absolute -top-24 -right-24 w-64 h-64 bg-theme-accent/10 rounded-full blur-3xl"></div>
+            
+            <h2 class="section-header text-3xl font-bold text-center mb-8 text-white relative z-10 flex justify-center items-center">
+                <i data-lucide="shield-check" class="w-8 h-8 mr-3 text-theme-accent"></i> Operational Resilience: The Crisis Management Advantage
+            </h2>
+            
+            <p class="text-lg text-theme-gray mb-12 text-center max-w-3xl mx-auto relative z-10 leading-relaxed">
+                My experience as a <strong class="text-white font-bold">Security Advisor and Humanitarian Professional (MSF)</strong> provides highly valuable, non-technical capabilities that define operational resilience in a security context.
+            </p>
 
-        <div class="grid md:grid-cols-3 gap-8">
-            <!-- Feature Card 1: Incident Response Analogy -->
-            <div class="glow-card bg-theme-card p-6 rounded-xl shadow-xl border-t-4 border-red-500">
-                <i data-lucide="gauge" class="w-8 h-8 text-red-500 mb-3"></i>
-                <h4 class="text-xl font-semibold text-white mb-2">Pressure Management & Decision Making</h4>
-                <p class="text-theme-gray text-sm">Managed high-stress situations in Emergency Rooms and ICUs. This translates directly to **rapid, calm assessment, disciplined decision-making**, and accurate execution of containment protocols during an active security incident.</p>
-            </div>
+            <div class="grid md:grid-cols-3 gap-8 relative z-10">
+                <div class="bg-theme-card p-6 rounded-xl shadow-lg border-t-4 border-red-500 hover:-translate-y-2 transition duration-300">
+                    <i data-lucide="activity" class="w-8 h-8 text-red-500 mb-4"></i>
+                    <h4 class="text-xl font-bold text-white mb-3">Pressure & Decision Making</h4>
+                    <p class="text-theme-gray text-sm leading-relaxed">Managed high-stress situations in Emergency Rooms and ICUs. This translates directly to <strong class="text-white">rapid, calm assessment, disciplined decision-making</strong>, and accurate execution of containment protocols during an active security incident.</p>
+                </div>
 
-            <!-- Feature Card 2: Confidentiality & Integrity -->
-            <div class="glow-card bg-theme-card p-6 rounded-xl shadow-xl border-t-4 border-yellow-500">
-                <i data-lucide="fingerprint" class="w-8 h-8 text-yellow-500 mb-3"></i>
-                <h4 class="text-xl font-semibold text-white mb-2">Unwavering Confidentiality & Compliance</h4>
-                <p class="text-theme-gray text-sm">Responsible for sensitive **patient health information (PHI)** and operational intelligence. Guaranteed strict adherence to policy, demonstrating an intrinsic understanding of data integrity and discretion required for compliance roles.</p>
-            </div>
+                <div class="bg-theme-card p-6 rounded-xl shadow-lg border-t-4 border-yellow-500 hover:-translate-y-2 transition duration-300">
+                    <i data-lucide="fingerprint" class="w-8 h-8 text-yellow-500 mb-4"></i>
+                    <h4 class="text-xl font-bold text-white mb-3">Confidentiality & Compliance</h4>
+                    <p class="text-theme-gray text-sm leading-relaxed">Responsible for sensitive <strong class="text-white">patient health information (PHI)</strong> and operational intelligence. Guaranteed strict adherence to policy, demonstrating an intrinsic understanding of data integrity required for compliance roles.</p>
+                </div>
 
-            <!-- Feature Card 3: Communication & Policy -->
-            <div class="glow-card bg-theme-card p-6 rounded-xl shadow-xl border-t-4 border-cyan-500">
-                <i data-lucide="message-square-text" class="w-8 h-8 text-cyan-500 mb-3"></i>
-                <h4 class="text-xl font-semibold text-white mb-2">Cross-Functional Policy Adherence</h4>
-                <p class="text-theme-gray text-sm">As an MSF Security Advisor, I translated complex security protocols into actionable communication for non-technical, international teams, ensuring high **accountability and policy acceptance** across organizational boundaries.</p>
+                <div class="bg-theme-card p-6 rounded-xl shadow-lg border-t-4 border-cyan-500 hover:-translate-y-2 transition duration-300">
+                    <i data-lucide="message-square-text" class="w-8 h-8 text-cyan-500 mb-4"></i>
+                    <h4 class="text-xl font-bold text-white mb-3">Cross-Functional Translation</h4>
+                    <p class="text-theme-gray text-sm leading-relaxed">As an MSF Security Advisor, I translated complex protocols into actionable communication for non-technical teams, ensuring high <strong class="text-white">accountability and policy acceptance</strong> across organizational boundaries.</p>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Certifications Section -->
-    <section id="certs" class="py-16 px-4 md:px-8 max-w-6xl mx-auto bg-theme-card/50 rounded-lg shadow-inner">
-        <h2 class="section-header text-3xl font-bold text-center mb-10 text-white">
-            <i data-lucide="trophy" class="inline-block w-7 h-7 mr-2 text-theme-accent"></i> Verifiable Certifications & Technical Proof
+    <section id="certs" class="py-16 px-4 md:px-8 max-w-6xl mx-auto animate-on-load delay-300">
+        <h2 class="section-header text-3xl font-bold text-center mb-12 text-white flex justify-center items-center">
+            <i data-lucide="award" class="w-8 h-8 mr-3 text-theme-accent"></i> Verifiable Certifications & Proof
         </h2>
 
-        <div class="grid md:grid-cols-3 gap-8">
-            
-            <!-- Cert Card 1: Google -->
-            <div class="glow-card bg-theme-dark p-6 rounded-xl shadow-xl border border-theme-card">
-                <h3 class="text-xl font-semibold text-theme-accent mb-2">Google Cybersecurity Professional Cert.</h3>
-                <p class="text-sm text-theme-gray mb-4">Coursera | Completion: Jan 2025</p>
-                <ul class="list-disc ml-5 text-theme-text text-sm space-y-1">
-                  <li>8-course mastery of **Python Automation, Detection & Response, Linux, and SIEM/IDS** fundamentals.</li>
-                </ul>
-                <a href="https://coursera.org/verify/professionals-cert/9EMHGS2G0UAM" target="_blank" class="mt-4 inline-flex items-center text-white bg-theme-accent/20 hover:bg-theme-accent/30 px-3 py-1 rounded-full text-sm font-medium transition duration-300">
-                    Verify Credentials
+        <div class="grid md:grid-cols-3 gap-6">
+            <div class="glow-card bg-theme-card p-6 rounded-xl shadow-lg flex flex-col h-full">
+                <div class="flex-grow">
+                    <h3 class="text-lg font-bold text-white mb-1">Google Cybersecurity Professional Cert.</h3>
+                    <p class="text-xs text-theme-accent mb-4 font-medium">Coursera | Jan 2025</p>
+                    <p class="text-sm text-theme-gray leading-relaxed mb-4">8-course mastery of <strong class="text-white">Python Automation, Detection & Response, Linux, and SIEM/IDS</strong> fundamentals.</p>
+                </div>
+                <a href="https://coursera.org/verify/professionals-cert/9EMHGS2G0UAM" target="_blank" rel="noopener noreferrer" class="mt-auto flex items-center justify-center text-white bg-slate-700 hover:bg-theme-accent hover:text-theme-dark py-2 px-4 rounded-lg text-sm font-bold transition duration-300">
+                    Verify Credentials <i data-lucide="external-link" class="w-4 h-4 ml-2"></i>
                 </a>
             </div>
 
-            <!-- Cert Card 2: TryHackMe -->
-            <div class="glow-card bg-theme-dark p-6 rounded-xl shadow-xl border border-theme-card">
-                <h3 class="text-xl font-semibold text-theme-accent mb-2">Advent of Cyber 2024 Completion (THM)</h3>
-                <p class="text-sm text-theme-gray mb-4">TryHackMe | Completion: Dec 2024</p>
-                <ul class="list-disc ml-5 text-theme-text text-sm space-y-1">
-                    <li>Completed **24 practical, hands-on challenges** in forensics, web exploitation, and defensive strategies.</li>
-                </ul>
-                <a href="https://tryhackme-certificates.s3-eu-west-1.amazonaws.com/THM-BB6YTOI6RT.pdf" target="_blank" class="mt-4 inline-flex items-center text-white bg-theme-accent/20 hover:bg-theme-accent/30 px-3 py-1 rounded-full text-sm font-medium transition duration-300">
-                    View Certificate <i data-lucide="download" class="w-4 h-4 ml-1"></i>
+            <div class="glow-card bg-theme-card p-6 rounded-xl shadow-lg flex flex-col h-full">
+                <div class="flex-grow">
+                    <h3 class="text-lg font-bold text-white mb-1">Advent of Cyber 2024</h3>
+                    <p class="text-xs text-theme-accent mb-4 font-medium">TryHackMe | Dec 2024</p>
+                    <p class="text-sm text-theme-gray leading-relaxed mb-4">Completed <strong class="text-white">24 practical, hands-on challenges</strong> in forensics, web exploitation, and defensive strategies.</p>
+                </div>
+                <a href="https://tryhackme-certificates.s3-eu-west-1.amazonaws.com/THM-BB6YTOI6RT.pdf" target="_blank" rel="noopener noreferrer" class="mt-auto flex items-center justify-center text-white bg-slate-700 hover:bg-theme-accent hover:text-theme-dark py-2 px-4 rounded-lg text-sm font-bold transition duration-300">
+                    View Certificate <i data-lucide="download" class="w-4 h-4 ml-2"></i>
                 </a>
             </div>
             
-            <!-- Cert Card 3: Mastercard -->
-            <div class="glow-card bg-theme-dark p-6 rounded-xl shadow-xl border border-theme-card">
-                <h3 class="text-xl font-semibold text-theme-accent mb-2">Mastercard Cybersecurity Job Simulation</h3>
-                <p class="text-sm text-theme-gray mb-4">Forage | Completion: May 2024</p>
-                <ul class="list-disc ml-5 text-theme-text text-sm space-y-1">
-                    <li>Practical experience in phishing defense design and interpreting security awareness results.</li>
-                </ul>
-                <a href="https://forage-uploads-prod.s3.amazonaws.com/completion-certificates/mastercard/vcKAB5yYAgvemepGQ_Mastercard_JMsHG793ksfGqPq9v_1715191717515_completion_certificate.pdf" target="_blank" class="mt-4 inline-flex items-center text-white bg-theme-accent/20 hover:bg-theme-accent/30 px-3 py-1 rounded-full text-sm font-medium transition duration-300">
-                    View Certificate <i data-lucide="download" class="w-4 h-4 ml-1"></i>
+            <div class="glow-card bg-theme-card p-6 rounded-xl shadow-lg flex flex-col h-full">
+                <div class="flex-grow">
+                    <h3 class="text-lg font-bold text-white mb-1">Cybersecurity Job Simulation</h3>
+                    <p class="text-xs text-theme-accent mb-4 font-medium">Mastercard (Forage) | May 2024</p>
+                    <p class="text-sm text-theme-gray leading-relaxed mb-4">Practical experience in phishing defense design and interpreting security awareness results.</p>
+                </div>
+                <a href="https://forage-uploads-prod.s3.amazonaws.com/completion-certificates/mastercard/vcKAB5yYAgvemepGQ_Mastercard_JMsHG793ksfGqPq9v_1715191717515_completion_certificate.pdf" target="_blank" rel="noopener noreferrer" class="mt-auto flex items-center justify-center text-white bg-slate-700 hover:bg-theme-accent hover:text-theme-dark py-2 px-4 rounded-lg text-sm font-bold transition duration-300">
+                    View Certificate <i data-lucide="download" class="w-4 h-4 ml-2"></i>
                 </a>
             </div>
         </div>
     </section>
 
-    <!-- Footer & Final CTA -->
-    <footer class="bg-theme-card py-12 text-center border-t border-theme-accent/50">
+    <footer class="bg-theme-dark py-16 text-center border-t border-theme-card mt-10">
         <div class="max-w-4xl mx-auto px-4">
-            <h3 class="text-3xl font-bold mb-4 text-theme-accent">Final Step: View the full Resume.</h3>
-            <p class="text-theme-gray mb-8 max-w-md mx-auto">
-                My full resume provides the complete professional timeline and detailed project descriptions.
+            <h3 class="text-3xl font-extrabold mb-4 text-white">Ready for the Full Timeline?</h3>
+            <p class="text-theme-gray mb-8 max-w-md mx-auto text-lg">
+                Review my complete professional history, educational background, and detailed project scopes.
             </p>
             
-            <!-- Final CTA: Download Resume (User must replace the # with their actual resume PDF link) -->
-            <a href="#" class="inline-flex items-center text-lg font-bold py-3 px-10 rounded-full shadow-2xl bg-theme-accent text-theme-dark transition duration-300 hover:bg-white hover:scale-[1.02]">
+            <a href="Azmol_Rony_Digital_Impact_Resume.pdf" download="Azmol_Rony_Digital_Impact_Resume.pdf" target="_blank" rel="noopener noreferrer" class="inline-flex items-center text-lg font-bold py-4 px-10 rounded-full shadow-lg bg-theme-accent text-theme-dark transition duration-300 hover:bg-white hover:-translate-y-1">
                 <i data-lucide="file-text" class="w-5 h-5 mr-2"></i> Download Full Resume (PDF)
             </a>
             
-            <p class="text-xs text-theme-gray mt-8">Bogura, Bangladesh | GitHub: Cyber-Safety</p>
-            <p class="text-xs text-theme-gray mt-2">&copy; 2025 MD Azmol Haque Rony. All rights reserved.</p>
+            <div class="mt-12 pt-8 border-t border-slate-800">
+                <p class="text-sm text-theme-gray font-medium">Bogura, Bangladesh | GitHub: Cyber-Safety</p>
+                <p class="text-xs text-theme-gray mt-2 opacity-75">&copy; 2026 MD Azmol Haque Rony. All rights reserved.</p>
+            </div>
         </div>
     </footer>
 
     <script>
-        // Initialize Lucide Icons after the DOM loads
+        // Initialize Lucide Icons
         lucide.createIcons();
     </script>
-
 </body>
 </html>
