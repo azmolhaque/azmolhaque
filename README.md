@@ -8,6 +8,15 @@
 
 ---
 
+### 🔎 Featured security research
+**[Anatomy of an Exposed IAM Frontend — Google VRP](https://github.com/azmolhaque/security-writeups/blob/main/2026-05-exposed-iam-frontend-google-vrp.md)**
+A total authentication bypass on a Google-acquisition asset (P2/S2, Fixed) — and an
+honest analysis of *why it was correctly not rewarded*. Covers the repeatable method
+for finding un-migrated acquisition infrastructure, the "edge-fronted ≠ operated"
+root-cause distinction, and a defender's-eye detection & remediation plan.
+
+---
+
 ## 👨‍💻 About Me — Bridging Frontline Operations with Secure IT Infrastructure
 
 I am a cybersecurity and IT professional with a unique operational background. Having spent nearly two years managing high-stakes environments in the refugee response with Médecins Sans Frontières (MSF), I have transitioned my crisis-triage mindset into the digital realm. I specialize in threat hunting, IT service management, system troubleshooting, and securing critical organizational infrastructure. 
