@@ -167,7 +167,7 @@
                 <section id="summary" class="mb-24 pt-8 fade-in-section">
                      <h2 class="text-4xl md:text-5xl font-extrabold text-white mb-6 tracking-tight">MD AZMOL HAQUE RONY</h2>
                      <p class="text-lg md:text-xl text-gray-400 leading-relaxed max-w-3xl">
-                        A highly disciplined Security Practitioner with <strong class="text-white">3+ years of equivalent Security Operations experience</strong>, gained through intensive global bug bounty hunting and technical projects. I blend <strong class="text-[#58a6ff]">proven technical hunting skills (OWASP/API)</strong> with a decade of high-stakes <strong class="text-white">Crisis Management</strong> (Médecins Sans Frontières / MSF), delivering precision and unwavering integrity crucial for <strong class="text-white">Incident Response Runbooks</strong>.
+                        A disciplined security practitioner (<strong class="text-white">Google VRP&ndash;credited</strong>) who came to security from a demanding healthcare and humanitarian background. I blend <strong class="text-[#58a6ff]">hands-on hunting skills (OWASP / API security)</strong> with years of high-stakes <strong class="text-white">crisis management</strong> (M&eacute;decins Sans Fronti&egrave;res / MSF), bringing precision, calm under pressure, and unwavering integrity to <strong class="text-white">vulnerability triage and incident response</strong>.
                     </p>
                 </section>
                 
@@ -176,8 +176,8 @@
                     <p class="mb-10 text-gray-400 text-lg max-w-3xl">This section demonstrates hands-on expertise in identifying, triaging, and documenting critical security flaws—core functions aligned with <strong class="text-white">SOC Tier 2 analysis</strong> and <strong class="text-white">Threat Hunting</strong>.</p>
                     <div class="grid md:grid-cols-3 gap-6">
                         <div class="card p-8 rounded-xl">
-                            <h3 class="font-bold text-[#58a6ff] text-xl mb-3">High-Severity Findings</h3>
-                            <p class="text-gray-300 leading-relaxed">Identified and disclosed <strong class="text-white">5+ High-to-Exceptional Severity</strong> flaws to major firms, including <strong class="text-white">Google VRP, BMW, and Monzo</strong>.</p>
+                            <h3 class="font-bold text-[#58a6ff] text-xl mb-3">Google VRP &mdash; Credited Finding</h3>
+                            <p class="text-gray-300 leading-relaxed">Reported an exposed IAM front-end on a <strong class="text-white">Google-owned domain</strong> via Google Bug Hunters &mdash; remediated in 9 days. I rated it accurately; it resolved to low real-world impact and was <strong class="text-white">correctly credit-only</strong>.</p>
                         </div>
                         <div class="card p-8 rounded-xl">
                             <h3 class="font-bold text-[#58a6ff] text-xl mb-3">Key Flaw Expertise</h3>
@@ -196,12 +196,12 @@
                      <div class="space-y-8">
                         <div class="card p-8 rounded-xl border-l-4 border-l-yellow-500">
                             <h3 class="font-bold text-2xl text-white mb-3">Synology Maps API Key Exposure</h3>
-                            <p class="text-gray-300 mb-5 leading-relaxed"><strong class="text-white">Technical Detail:</strong> Key retrieved via passive scanning of static HTML assets; confirmed key validity by initiating authenticated API calls, risking quota exhaustion.</p>
+                            <p class="text-gray-300 mb-5 leading-relaxed"><strong class="text-white">Technical Detail:</strong> Unrestricted Google Maps API key found in a client-side script via passive recon. Confirmed it lacked origin restrictions &mdash; an exposed-credential / missing-restriction issue (<strong class="text-white">Low</strong>), with potential for quota/billing abuse. Recalibrated from an earlier over-stated write-up.</p>
                             <a href="https://azmolhaque.github.io/synology_poc/" target="_blank" rel="noopener noreferrer" class="font-bold text-gray-900 bg-[#58a6ff] hover:bg-[#388bfd] px-4 py-2 rounded-md transition-colors inline-flex items-center">View PoC Demo <i data-lucide="arrow-right" class="inline w-4 h-4 ml-2"></i></a>
                         </div>
                         <div class="card p-8 rounded-xl border-l-4 border-l-blue-500">
                             <h3 class="font-bold text-2xl text-white mb-3">Wing.com Geocoding API Key Leak</h3>
-                            <p class="text-gray-300 mb-5 leading-relaxed"><strong class="text-white">Technical Detail:</strong> Identified and validated exposed API key in a client-side script. Exploit confirmed unauthorized access to <strong class="text-white">Cloud IaaS</strong> billing functions, demonstrating critical financial risk.</p>
+                            <p class="text-gray-300 mb-5 leading-relaxed"><strong class="text-white">Technical Detail:</strong> Unrestricted Google Maps API key exposed in a client-side script. Confirmed it was usable from any origin (no referrer restriction) &mdash; potential for quota/billing abuse (<strong class="text-white">Low&ndash;Medium</strong>). No user data or infrastructure access; remediation is key hardening.</p>
                             <a href="https://azmolhaque.github.io/wing-com-unrestricted-maps-api-key-poc/" target="_blank" rel="noopener noreferrer" class="font-bold text-gray-900 bg-[#58a6ff] hover:bg-[#388bfd] px-4 py-2 rounded-md transition-colors inline-flex items-center">View PoC Demo <i data-lucide="arrow-right" class="inline w-4 h-4 ml-2"></i></a>
                         </div>
                     </div>

@@ -139,7 +139,7 @@
             </p>
             
             <p class="text-base md:text-lg max-w-3xl mx-auto text-theme-gray mb-10 leading-relaxed">
-                A highly disciplined security practitioner with <strong class="text-white font-bold">3+ years of hands-on experience</strong> in identifying, analyzing, and reporting critical vulnerabilities (Google VRP, BMW, Monzo). My technical proficiency is reinforced by a decade of high-stakes <strong class="text-white font-bold">crisis and confidentiality management</strong> (MSF), delivering a unique blend of technical defense, precise incident response, and unwavering integrity.
+                A disciplined security practitioner (<strong class="text-white font-bold">Google VRP&ndash;credited</strong>) who moved into security from a demanding healthcare and humanitarian background. I identify, analyze, and report vulnerabilities with calibrated, defensible severity &mdash; reinforced by years of high-stakes <strong class="text-white font-bold">crisis and confidentiality management</strong> (MSF), for a blend of technical defense, precise incident response, and unwavering integrity.
             </p>
 
             <div class="contact-box p-6 rounded-xl max-w-lg mx-auto mb-10">
@@ -172,7 +172,7 @@
                 <ul class="list-none text-theme-gray space-y-4 text-base">
                     <li class="flex items-start">
                         <i data-lucide="chevron-right" class="w-5 h-5 mr-2 text-theme-danger shrink-0 mt-0.5"></i>
-                        <span><strong class="text-white">Threat Hunting:</strong> Proactively identified and disclosed <strong class="text-theme-danger font-bold">5+ High-to-Exceptional Severity</strong> vulnerabilities to global firms (Google VRP, Flipkart, Monzo, BMW).</span>
+                        <span><strong class="text-white">Google VRP (credited):</strong> Reported an exposed IAM front-end on a <strong class="text-theme-danger font-bold">Google-owned domain</strong> &mdash; remediated in 9 days. Rated accurately; it resolved to low real-world impact and was correctly credit-only.</span>
                     </li>
                     <li class="flex items-start">
                         <i data-lucide="chevron-right" class="w-5 h-5 mr-2 text-theme-danger shrink-0 mt-0.5"></i>
@@ -188,7 +188,7 @@
             <div class="space-y-6">
                 <div class="glow-card bg-theme-card p-6 rounded-xl shadow-lg border-l-4 border-yellow-500">
                     <h4 class="text-xl font-semibold text-white mb-2">PoC: Synology Maps API Key Exposure</h4>
-                    <p class="text-theme-gray text-sm mb-4 leading-relaxed"><strong class="text-white">Risk Quantified:</strong> Demonstrated unrestricted Places API abuse, proving potential for <strong class="text-white font-bold">financial quota exhaustion</strong> and PII/metadata leakage. Identified a critical failure in client-side access control.</p>
+                    <p class="text-theme-gray text-sm mb-4 leading-relaxed"><strong class="text-white">Finding:</strong> Unrestricted Google Maps/Places API key in client-side code &mdash; usable from any origin, so potential for <strong class="text-white font-bold">quota/billing abuse</strong>. An exposed-credential / missing-restriction issue (Low); fix is key hardening. Recalibrated from an earlier over-stated write-up.</p>
                     <a href="https://azmolhaque.github.io/synology_poc/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center text-theme-accent hover:text-white font-medium text-sm transition duration-300">
                         View Live PoC <i data-lucide="external-link" class="w-4 h-4 ml-1"></i>
                     </a>
@@ -196,7 +196,7 @@
 
                 <div class="glow-card bg-theme-card p-6 rounded-xl shadow-lg border-l-4 border-blue-500">
                     <h4 class="text-xl font-semibold text-white mb-2">PoC: Wing.com Geocoding API Key Leak</h4>
-                    <p class="text-theme-gray text-sm mb-4 leading-relaxed"><strong class="text-white">Risk Quantified:</strong> Verified unauthorized usage of a Geocoding API key, illustrating a direct financial impact through unauthorized consumption of paid cloud services and data processing.</p>
+                    <p class="text-theme-gray text-sm mb-4 leading-relaxed"><strong class="text-white">Finding:</strong> Unrestricted Google Maps API key confirmed usable from an unrelated origin (no referrer restriction) &mdash; potential for quota/billing abuse (Low&ndash;Medium). No user data or infrastructure access.</p>
                     <a href="https://azmolhaque.github.io/wing-com-unrestricted-maps-api-key-poc/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center text-theme-accent hover:text-white font-medium text-sm transition duration-300">
                         View Live PoC <i data-lucide="external-link" class="w-4 h-4 ml-1"></i>
                     </a>
@@ -338,7 +338,7 @@
             </a>
             
             <div class="mt-12 pt-8 border-t border-slate-800">
-                <p class="text-sm text-theme-gray font-medium">Bogura, Bangladesh | GitHub: Cyber-Safety</p>
+                <p class="text-sm text-theme-gray font-medium">Dhaka, Bangladesh | GitHub: @azmolhaque</p>
                 <p class="text-xs text-theme-gray mt-2 opacity-75">&copy; 2026 MD Azmol Haque Rony. All rights reserved.</p>
             </div>
         </div>
